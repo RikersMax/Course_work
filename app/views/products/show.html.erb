@@ -1,0 +1,26 @@
+
+<p>	
+	id -- <%= @product[0].id %>
+</p>
+<p>
+	name -- <%= @product[0].product_name %>
+</p>
+<p>	
+	desc -- <%= @product[0].description %>
+</p>
+<p>
+	purpose -- <%= @product[0].name_purpose %>
+</p>
+<p>
+	date create -- <%= l(@product[0].created_at, format: :short) %>	
+</p>
+<p>
+	date update -- <%= l(@product[0].updated_at, format: :short) %>
+</p>
+<p>
+	
+</p>
+	<%= link_to('Изменить', "/products/#{@product[0].id}/edit") %>
+<p>
+	<%= button_to('Удалить', "/products/#{@product[0].id}", method: :delete, title: 'delete') %>
+</p>

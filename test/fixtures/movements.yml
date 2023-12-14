@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consumption: MyString
+  expense: MyString
+
+two:
+  consumption: MyString
+  expense: MyString

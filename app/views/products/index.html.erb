@@ -1,0 +1,42 @@
+
+<table>
+	<caption>Наименнование изделий</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Название</th>
+			<th>Описание</th>
+			<th>Назначение</th>
+			<th>Дата изменения</th>
+			<th>Дата создания</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @products_all.each do |t| %>
+		<tr>
+			<td>
+				<%= t.id %>
+			</td>
+			<td>
+				<%= t.product_name%>
+			</td>
+			<td>
+				<%= t.description%>				
+			</td>
+			<td>
+				<%= t.name_purpose %>
+			</td>
+			<td>
+				<%= l(t.updated_at, format: :short)%>
+			</td>
+			<td>
+				<%= l(t.created_at, format: :short)%>
+			</td>
+			<td>
+				<%=link_to('Инфо', "/products/#{t.id}", title: 'info') %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
