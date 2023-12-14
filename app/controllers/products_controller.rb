@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action(:set_product, only: %i[edit update show destroy])
-  before_action(:all_purposes, only: %i[new edit])
+  before_action(:select_purposes, only: %i[new edit])
 
   def index
     #@products_all = Product.joins("INNER JOIN purposes ON products.purpose_id = purposes.id ")
@@ -59,11 +59,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def all_purposes
-    purposes = Purpose.all
-    @purposes = []
-    purposes.each do |t|
-      @purposes << [t.name_purpose, t.id]
+  def select_purposes
+    @select_purposes = Purpose.all.each.inject([]) do |result, (t)|
+      result << [t.name_purpose, t.id]
+      result
     end
   end
 
