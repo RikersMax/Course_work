@@ -1,0 +1,4 @@
+<%= form_with model: product do |f| %>
+	<p><%= f.label :product_name, 'name product' %></p>
+	<p><%= f.select :product_name, @select_products%></p>
+<% end %>

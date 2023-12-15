@@ -1,0 +1,31 @@
+
+<h1>Order details</h1>
+<div>
+	<p><h2>Order</h2></p>
+	<p>id -- <%=@order_details.id %></p>
+	<p>quantity -- <%=@order_details.quantity %></p>
+	<p>date -- <%=@order_details.date %></p>
+	<p>address -- <%=@order_details.address %></p>
+	<p>note -- <%=@order_details.note %></p>
+</div><hr>
+<div>
+	<p><h2>Product</h2></p>
+	<p>id -- <%=@order_details.id %></p>
+	<p>product_name -- <%=@order_details.product_name %></p>
+	<p>descroption -- <%=@order_details.description %></p>
+	<p>purpose -- <%=@order_details.name_purpose %></p>
+	<p>created date -- <%=@order_details.created_at.strftime("%d/%m/%Y") %></p>
+	<p>updated date -- <%=@order_details.updated_at.strftime("%d/%m/%Y") %></p>
+</div><hr>
+
+<div>
+	<p><h2>Movement</h2></p>
+	<p>move -- <%= @order_details.name_movement %></p>
+</div><hr>
+
+<div>
+	<p><h2>Employee</h2></p>
+	<p>name -- <%= @order_details.person_name %></p>
+	<p>job title -- <%= @order_details.job_title %></p>
+	<p>number -- <%= @order_details.personnel_number %></p>
+</div>

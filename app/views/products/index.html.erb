@@ -28,10 +28,10 @@
 				<%= t.name_purpose %>
 			</td>
 			<td>
-				<%= l(t.updated_at, format: :short)%>
+				<%= t.updated_at.strftime("%d/%m/%Y")%>
 			</td>
 			<td>
-				<%= l(t.created_at, format: :short)%>
+				<%= t.created_at.strftime("%d/%m/%Y")%>
 			</td>
 			<td>
 				<%=link_to('Инфо', "/products/#{t.id}", title: 'info') %>
