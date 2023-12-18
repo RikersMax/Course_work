@@ -1,4 +1,24 @@
 <%= form_with model: product do |f| %>
-	<p><%= f.label :product_name, 'name product' %></p>
-	<p><%= f.select :product_name, @select_products%></p>
+	<p><%= f.label :product_id, 'name product' %></p>
+	<p><%= f.select :product_id, @select_products%></p>
+
+	<p><%= f.label :movement_id, 'name movement' %></p>
+	<p><%= f.select :movement_id, @select_movements %></p>
+
+	<p><%= f.label :quantity, 'quantity' %></p>
+	<p><%= f.number_field :quantity %></p>
+
+	<p><%= f.label :date, 'date' %></p>
+	<p><%= f.date_field :date , value: Time.now%></p>
+
+	<p><%= f.label :address, 'address filed' %></p>
+	<p><%= f.text_field :address %></p>
+
+	<p><%= f.label :person_id, 'employer' %></p>
+	<p><%= f.select :person_id, @person %></p>
+
+	<p><%= f.label :note, 'note' %></p>
+	<p><%= f.text_area :note, cols: 50, rows: 10 %></p>
+
+	<p><%= f.button submit_title(f) %></p>
 <% end %>

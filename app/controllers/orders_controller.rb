@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   before_action(:set_all_orders, only: %i[index])
   before_action(:set_order, only: %i[show])
   before_action(:select_products, only: %i[new edit])
+  before_action(:select_movement, only: %i[new])
+  before_action(:select_person, only: %i[new])
 
 
   def index
@@ -20,7 +22,10 @@ class OrdersController < ApplicationController
 
 
   def create
+    order = Order.new(orders_params)
+    order.save
 
+    redirect_to('/orders')
   end
 
 
@@ -64,12 +69,29 @@ class OrdersController < ApplicationController
   end
 
 
-
   def select_products
     @select_products = Product.all.each.inject([]) do |result, (t)|
       result << [t.product_name, t.id]
       result
     end
+  end
+
+  def select_movement
+    @select_movements = Movement.all.each.inject([]) do |result, (t)|
+      result << [t.name_movement, t.id]
+      result
+    end
+  end
+
+  def select_person
+    @person = Person.all.each.inject([]) do |result, (t)|
+      result << [t.name, t.id]
+      result
+    end
+  end
+
+  def orders_params
+    params.require(:order).permit(:product_id, :movement_id, :quantity, :date, :address, :person_id, :note)
   end
 
 end
