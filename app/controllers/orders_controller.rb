@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action(:set_all_orders, only: %i[index])
-  before_action(:set_order, only: %i[show])
+  before_action(:set_order_details, only: %i[show])
   before_action(:select_products, only: %i[new edit])
-  before_action(:select_movement, only: %i[new])
-  before_action(:select_person, only: %i[new])
+  before_action(:select_movement, only: %i[new edit])
+  before_action(:select_person, only: %i[new edit])
 
 
   def index
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
 
   def create
-    order = Order.new(orders_params)
+    order = Order.new(order_params)
     order.save
 
     redirect_to('/orders')
@@ -30,7 +30,14 @@ class OrdersController < ApplicationController
 
 
   def edit
+    @order = Order.find(params[:id])
+  end
 
+  def update
+    order = Order.find(params[:id])
+    order.update(order_params)
+
+    redirect_to("/orders/#{order.id}")
   end
 
 
@@ -47,10 +54,11 @@ class OrdersController < ApplicationController
       INNER JOIN products ON orders.product_id = products.id
       INNER JOIN movements ON orders.movement_id = movements.id
       INNER JOIN people ON orders.person_id = people.id
+      ORDER BY orders.id ASC;
       ")
   end
 
-  def set_order
+  def set_order_details
     order = Order.find(params[:id])
 
     @order_details = Order.find_by_sql("
@@ -64,7 +72,7 @@ class OrdersController < ApplicationController
       INNER JOIN movements ON orders.movement_id = movements.id
       INNER JOIN people ON orders.person_id = people.id
       INNER JOIN purposes ON products.purpose_id = purposes.id
-      WHERE orders.id = #{order.id}
+      WHERE orders.id = #{order.id};
       ")[0]
   end
 
@@ -90,7 +98,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def orders_params
+  def order_params
     params.require(:order).permit(:product_id, :movement_id, :quantity, :date, :address, :person_id, :note)
   end
 

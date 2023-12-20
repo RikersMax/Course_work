@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
       "SELECT products.id, products.product_name, products.description, purposes.name_purpose,
       products.updated_at, products.created_at
       FROM products
-      INNER JOIN purposes ON products.purpose_id = purposes.id")
+      INNER JOIN purposes ON products.purpose_id = purposes.id;
+      ")
   end
 
   def show
@@ -17,7 +18,8 @@ class ProductsController < ApplicationController
       products.updated_at, products.created_at
       FROM products
       INNER JOIN purposes ON products.purpose_id = purposes.id
-      WHERE products.id = #{params[:id]}")
+      WHERE products.id = #{params[:id]};
+      ")
   end
 
   def new

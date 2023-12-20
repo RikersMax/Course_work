@@ -9,7 +9,7 @@
 	<p><%= f.number_field :quantity %></p>
 
 	<p><%= f.label :date, 'date' %></p>
-	<p><%= f.date_field :date , value: Time.now%></p>
+	<p><%= f.date_field :date , value: date_exists?(f) %></p>
 
 	<p><%= f.label :address, 'address filed' %></p>
 	<p><%= f.text_field :address %></p>
