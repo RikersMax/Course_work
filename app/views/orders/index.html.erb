@@ -16,6 +16,7 @@
       <th>address</th>
       <th>person</th>
       <th>note</th>
+      <th colspan="3">action</th>
     </tr>
   </thead>
   <tbody>
@@ -50,6 +51,12 @@
         </td>
         <td>
         	<%= link_to('info', "/orders/#{t.id}", title: 'info') %>
+        </td>
+        <td>
+          <%= link_to('edit', "/orders/#{t.id}/edit", title: 'info') %>
+        </td>
+        <td>
+          <%= button_to('delete', "/orders/#{t.id}", method: :delete, title: 'delete') %>
         </td>
       </tr>
     <% end %>

@@ -40,6 +40,13 @@ class OrdersController < ApplicationController
     redirect_to("/orders/#{order.id}")
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+
+    redirect_to('/orders')
+  end
+
 
 
   private
