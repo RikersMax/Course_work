@@ -18,7 +18,11 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 
-gem "bootsnap", require: false
+gem "bcrypt", "~> 3.1.7"
+
+gem "kaminari", "~> 1.2"
+
+gem "draper", "~>4.0"
 
 
 group :development, :test do
