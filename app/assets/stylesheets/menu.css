@@ -1,0 +1,18 @@
+.menu {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+}
+
+.nav-bar {		
+	grid-column: 2/4;
+}
+
+.nav-bar ul {	
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-bar a {
+	color: white;
+	text-decoration: none;
+}

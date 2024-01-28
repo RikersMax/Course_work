@@ -1,2 +1,38 @@
-<h1>index</h1>
-<hr>
+<article class="a-head">
+	<h1>index</h1>
+	<hr>	
+</article>
+
+<div class="content-main">	
+
+<table class="content-table">
+	<caption>
+		Все изделия
+	</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Название</th>
+			<th>Индификацинонный номер</th>
+			<th>Назначение</th>
+			<th>Описание</th>
+			<th>Дата создания</th>
+			<th>Дата измененмя</th>			
+		</tr>
+	</thead>
+	<tbody>
+		<%@products.each do |p|%>
+			<tr>
+				<td><%= p.id%></td>
+				<td><%= p.name%></td>
+				<td><%= p.ident_number%></td>
+				<td><%= p.target.name%></td>
+				<td><%= p.description%></td>
+				<td><%= correct_date(p.created_at)%></td>
+				<td><%= correct_date(p.updated_at)%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+</div>

@@ -1,0 +1,39 @@
+.content-layout {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 1fr auto;	
+}
+
+.a-head {
+	grid-column: 1/13;
+}
+
+.content-main {	
+	grid-column: 2/12;	
+}
+
+.content-table {
+	font-size: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content-table table {
+	border-collapse: collapse;	
+}
+
+.content-table th, td {
+	border: 1px solid
+}
+
+.content-table thead, tfoot {
+  background-color: #3f87a6;
+}
+
+.content-table tbody {
+  background-color: #e4f0f5;
+}
+
+.content-table tbody tr:hover {
+	background-color: red;
+}
