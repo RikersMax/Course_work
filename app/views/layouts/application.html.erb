@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>CourseWork</title>
+    <title><%= current_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -14,19 +15,16 @@
       <header>
         <p><%= link_to('header', root_path)%></p>
         <div class="menu">
-          <div class="nav-bar">
-            <ul>
-              <li><a href="#">link1</a></li>
-              <li><a href="#">link2</a></li>
-              <li><a href="#">link2</a></li>
-            </ul>            
-          </div>
+          <%= yield(:menu) %>
+          <%= yield(:mini_menu) %>
         </div>
       </header>
       <main>
+        <% flash.each do |k, v| %>
+          <%= tag.div(v, class: "flash-#{k}") %>
+        <% end %>
         <div class="content-layout">
-          <%= yield %>        
-          
+          <%= yield %>          
         </div>
       </main>
       <footer>

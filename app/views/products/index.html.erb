@@ -1,3 +1,8 @@
+<% provide :page_title, 'All products' %>
+<% provide :menu, currently_at('Products')%>
+<% provide :mini_menu, currently_at_prod('Все изделия') %>
+
+
 <article class="a-head">
 	<h1>index</h1>
 	<hr>	
@@ -17,7 +22,7 @@
 			<th>Назначение</th>
 			<th>Описание</th>
 			<th>Дата создания</th>
-			<th>Дата измененмя</th>			
+			<th>Дата измененмя</th>		
 		</tr>
 	</thead>
 	<tbody>
@@ -28,8 +33,9 @@
 				<td><%= p.ident_number%></td>
 				<td><%= p.target.name%></td>
 				<td><%= p.description%></td>
-				<td><%= correct_date(p.created_at)%></td>
-				<td><%= correct_date(p.updated_at)%></td>
+				<td><%= currect_date(p.created_at)%></td>
+				<td><%= currect_date(p.updated_at)%></td>
+				<td><%= link_to('Инфо', product_path(p))%></td>
 			</tr>
 		<% end %>
 	</tbody>

@@ -22,4 +22,10 @@
 	<div>		
 		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
 	</div>
+
+	<% if object.persisted? %>
+	<div>
+		<%= link_to('Нзад', product_path(object))%>
+	</div>
+	<% end %>
 <% end %>

@@ -1,0 +1,20 @@
+.flash-notice {
+	background-color: #60b56e;
+	border: 1px solid;
+	border-color: #75d985;
+	color: white;
+}
+
+.flash-danger {
+	background-color: #9c2b2e;
+	border: 1px solid;
+	border-color: #e84e4f;
+	color: white;
+}
+
+.flash-info {
+	background-color: #7eb9d6;
+	border: 1px solid;
+	border-color: #96cfeb;
+	color: white;
+}

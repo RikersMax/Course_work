@@ -1,18 +1,58 @@
 .menu {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 2;	
 }
 
-.nav-bar {		
+.secondary-link {
+	color: #b81c48 !important;
+}
+
+.color-link {
+	color: white;
+}
+/*nav-bar*/
+
+.nav-bar {
 	grid-column: 2/4;
+	grid-row: 1;
+	padding-bottom: 1em;
 }
 
 .nav-bar ul {	
 	display: flex;
-	justify-content: space-between;
+	justify-content: start;
+	gap: 1em;
 }
 
 .nav-bar a {
 	color: white;
 	text-decoration: none;
+}
+
+.nav-bar a:hover {
+	color: #b81c48;
+}
+
+/*mini-bar*/
+
+.mini-bar {
+	grid-row: 2;
+	grid-column: 2/8;
+	padding-bottom: 1em;
+}
+
+.mini-bar ul {	
+	display: flex;
+	justify-content: start;
+	gap: 1em;
+}
+
+.mini-bar a {
+	color: white;
+	text-decoration: none;
+}
+
+.mini-bar a:hover {
+	color: #b81c48;
 }
