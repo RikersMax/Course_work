@@ -1,0 +1,13 @@
+<% provide :page_title, 'Targerts' %>
+<% provide :menu, currently_at('Products')%>
+<% provide :mini_menu, currently_at_prod('Создать новое назначение') %>
+
+<article class="a-head">
+	<h1>new</h1>
+	<hr>
+</article>
+
+<div class="content-main">
+	<%=render('form', object: @target) %>
+	
+</div>

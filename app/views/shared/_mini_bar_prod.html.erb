@@ -1,7 +1,9 @@
 <div class='mini-bar'>
 	<ul>
 		<li><%=nav_tab('Все изделия', products_path, {current_page: current_page}) %></li>		
-		<li><%=nav_tab('Создать новое изделие',  new_product_path, {current_page: current_page})%></li>		
-		<li><%= link_to('Назначение изделий', url='#')%></li>
+		<li><%=nav_tab('Создать новое изделие',  new_product_path, {current_page: current_page})%></li>
+		<hr style="border: 1px solid;">
+		<li><%=nav_tab('Назначение изделий', targets_path, {current_page: current_page}) %></li>
+		<li><%=nav_tab('Создать новое назначение', new_target_path, {current_page: current_page}) %></li>	
 	</ul>
 </div>

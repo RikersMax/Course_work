@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: 'main#index'
 
   resources 'products'
+  resources 'targets', except: %i[show]
+
   resources 'orders'
 
 end

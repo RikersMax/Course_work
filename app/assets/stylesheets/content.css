@@ -1,3 +1,5 @@
+/*main content*/
+
 .content-layout {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -11,6 +13,8 @@
 .content-main {	
 	grid-column: 2/12;	
 }
+
+/*table*/
 
 .content-table {
 	font-size: 1.5em;
@@ -34,6 +38,20 @@
   background-color: #e4f0f5;
 }
 
-.content-table tbody tr:hover {
-	background-color: red;
+.table-link-info {
+	text-decoration: none;
+	color: #3399ff;
+}
+
+.table-link-info:hover {
+	color: #b81c48;
+}
+
+.table-link-destroy {
+	text-decoration: none;
+	color: #ff3333;
+}
+
+.table-link-destroy:hover {
+	color: #b81c48;
 }

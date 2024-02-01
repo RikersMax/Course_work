@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action(:product_find, only: %i[edit show destroy update])
-  before_action(:target_select, only: %i[edit show new update])
+  before_action(:target_select, only: %i[edit show new update create])
 
   def index
     @products = Product.order(id: :desc)
@@ -34,16 +34,16 @@ class ProductsController < ApplicationController
     if @product.update(product_params)  then
       redirect_to(products_path)
     else
-      flash.now[:danger] = 'test'
+      flash.now[:danger] = 'Ошибка ввода'
       render(:edit)
     end
     #render(plain: params.to_yaml)
   end
 
   def destroy
-    flash[:info] = "#{@product.name} удален"
+    flash[:info] = "#{@product.name} удалено"
     @product.destroy
-    redirect_to(root_path)
+    redirect_to(products_path)
 
     #render(plain: params.to_yaml)
   end
