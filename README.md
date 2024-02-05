@@ -1,3 +1,3 @@
 # README
 
-Course work
+Course project

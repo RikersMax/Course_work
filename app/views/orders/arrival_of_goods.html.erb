@@ -1,18 +1,20 @@
-<% provide :page_title, 'All orders' %>
+<% provide :page_title, 'Сonsumption' %>
 <% provide :menu, currently_at('Приход-Расход')%>
-<% provide :mini_menu, currently_at_order('История') %>
-
+<% provide :mini_menu, currently_at_order('Приход') %>
 
 <article class="a-head">
-	<h1>index</h1>
+	<h1>arrival of goods</h1>
 	<hr>	
 </article>
 
 <div class="content-main">
-		
+	<p>приход</p>
+	<%=render(partial: 'form', locals: {object: @order, url: '/create_arrival_of_goods'}) %>
+
 	<table class="content-table text-size-l ">
 		<caption>
-			<span class="text-size-xl">Все изделия</span>
+			Опступления на склад за период с <b><%=(Time.now.midnight-1.day).strftime('%Y-%m-%d %H:%M')%></b> 
+							по <b><%= (Time.now.end_of_day).strftime('%Y-%m-%d %H:%M') %></b>
 		</caption>
 		<thead>
 			<tr>
@@ -47,5 +49,4 @@
 			<% end %>
 		</tbody>
 	</table>
-
 </div>

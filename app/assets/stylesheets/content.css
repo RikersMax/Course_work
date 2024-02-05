@@ -11,19 +11,24 @@
 }
 
 .content-main {	
-	grid-column: 2/12;	
+	grid-column: 2/12;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 /*table*/
 
-.content-table {
-	font-size: 1.5em;
+.content-table {	
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .content-table table {
 	border-collapse: collapse;	
+}
+
+.content-table caption {
+	padding-bottom: 1em;
 }
 
 .content-table th, td {

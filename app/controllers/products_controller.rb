@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save then
-      flash[:notice] = 'Изделие успешно созданно'
+      flash[:notice] = 'Изделие успешно создано'
       redirect_to(products_path)
     else
       flash.now[:danger] = 'Ошибка ввода'

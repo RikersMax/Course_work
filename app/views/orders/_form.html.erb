@@ -1,0 +1,45 @@
+<%= form_with model: object, url: (url ||= object), data: {turbo: false} do |f| %>
+	<div>
+		<%= f.label :product_id, 'Изделие' %>
+		<%= f.select(:product_id, @products) %>
+	</div>
+
+	<div>
+		<%= f.label :quantity, 'Колтчество' %>
+		<%= f.number_field :quantity %>
+	</div>
+
+	<div>
+		<%= f.label :employee_id, 'Сотрутдник' %>
+		<%= f.select(:employee_id, @employeer) %>
+	</div>
+
+	<% if @hidden_field then %>
+		<div>		
+			<%= f.hidden_field :address, value: 'Склад' %>
+		</div>
+	<% else %>
+		<div>
+			<%= f.label :address, 'Место отправки' %>
+			<%= f.text_field :address %>
+		</div>
+	<% end %>
+
+	<div>
+		<%= f.label :description, 'Примечание' %>
+		<%= f.text_field :description %>
+	</div>
+
+	<div>
+		<%= f.label :datestamp, 'Дата' %>
+		<%= f.date_field :datestamp, value: currect_date(Time.now) %>
+	</div>
+
+	<div>
+		<%= f.hidden_field :movement_id, value: @hidden_field ? '1' : '2' %>
+	</div>
+
+	<div>
+		<%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
+	</div>
+<% end %>

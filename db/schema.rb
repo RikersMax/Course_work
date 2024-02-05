@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_123718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "employeers", force: :cascade do |t|
+  create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.string "number"
+    t.string "number", null: false
     t.string "job_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["number"], name: "index_employees_on_number", unique: true
   end
 
   create_table "movements", force: :cascade do |t|
@@ -29,27 +30,38 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
     t.bigint "product_id", null: false
+    t.integer "quantity"
     t.bigint "movement_id", null: false
-    t.bigint "employeer_id", null: false
+    t.bigint "employee_id", null: false
     t.string "address"
     t.string "description"
+    t.datetime "datestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["employeer_id"], name: "index_orders_on_employeer_id"
+    t.index ["employee_id"], name: "index_orders_on_employee_id"
     t.index ["movement_id"], name: "index_orders_on_movement_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "ident_number"
+    t.string "name", null: false
+    t.string "ident_number", null: false
     t.bigint "target_id", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ident_number"], name: "index_products_on_ident_number", unique: true
+    t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["target_id"], name: "index_products_on_target_id"
+  end
+
+  create_table "storages", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_storages_on_product_id"
   end
 
   create_table "targets", force: :cascade do |t|
@@ -58,8 +70,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "orders", "employeers"
+  add_foreign_key "orders", "employees"
   add_foreign_key "orders", "movements"
   add_foreign_key "orders", "products"
   add_foreign_key "products", "targets"
+  add_foreign_key "storages", "products"
 end
