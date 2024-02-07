@@ -2,12 +2,12 @@
 <% provide :menu, currently_at('Приход-Расход')%>
 <% provide :mini_menu, currently_at_order('Приход') %>
 
-<article class="a-head">
-	<h1>arrival of goods</h1>
+<section class="a-head">
+	<strong>arrival of goods</strong>
 	<hr>	
-</article>
+</section>
 
-<div class="content-main">
+<article class="content-main">
 	<p>приход</p>
 	<%=render(partial: 'form', locals: {object: @order, url: '/create_arrival_of_goods'}) %>
 
@@ -49,4 +49,4 @@
 			<% end %>
 		</tbody>
 	</table>
-</div>
+</article>

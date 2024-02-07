@@ -2,11 +2,11 @@
 <% provide :menu, currently_at('Изделия')%>
 <% provide :mini_menu, currently_at_prod('Создать новое изделие') %>
 
-<article class="a-head">
-<h1>new</h1>
-<hr>
-</article>
+<section class="a-head">
+	<strong>new</strong>
+	<hr>
+</section>
 
-<div class="content-main">
+<article class="content-main">
 	<%=render('form', object: @product) %>
-</div>
+</article>

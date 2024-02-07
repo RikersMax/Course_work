@@ -2,12 +2,12 @@
 <% provide :menu, currently_at('Изделия')%>
 <% provide :mini_menu, currently_at_prod('Все изделия') %>
 
-<article class="a-head">
-<h1>show</h1>
-<hr>	
-</article>
+<section class="a-head">
+	<strong>show</strong>
+	<hr>	
+</section>
 
-<div class="content-main">			
+<article class="content-main">			
 			<p>Название - <%= @product.name%></p>
 			<p>Идентификационный номер - <%= @product.ident_number%></p>
 			<p>Назначение - <%= @product.target.name%></p>
@@ -18,4 +18,4 @@
 				<p><%=link_to('Изменить', edit_product_path(@product)) %></p>
 				<p><%=link_to('Удалить', product_path(@product), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %></p>
 			</div>		
-</div>
+</article>

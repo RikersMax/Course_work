@@ -14,7 +14,7 @@
 		<%= f.select(:employee_id, @employeer) %>
 	</div>
 
-	<% if @hidden_field then %>
+	<% if @hidden_field == '1' then %>
 		<div>		
 			<%= f.hidden_field :address, value: 'Склад' %>
 		</div>
@@ -36,7 +36,7 @@
 	</div>
 
 	<div>
-		<%= f.hidden_field :movement_id, value: @hidden_field ? '1' : '2' %>
+		<%= f.hidden_field :movement_id, value: @hidden_field %>
 	</div>
 
 	<div>
