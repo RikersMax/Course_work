@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.string :name, null: false, index: {unique: true}
       t.string :ident_number, null: false, index: {unique: true}
       t.belongs_to :target, null: false, foreign_key: true
+      t.integer :quantity
 
       t.text :description
 

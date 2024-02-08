@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   end
 
   def arrival_of_goods #приход
-    @hidden_field = true
+    @hidden_field = '1'
 
     @orders = product_movement_id(1)
     @order = Order.new
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def consumption_of_goods #расод
-    @hidden_field = false
+    @hidden_field = '2'
 
     @orders = product_movement_id(2)
     @order = Order.new
@@ -37,11 +37,15 @@ class OrdersController < ApplicationController
 
 
   def create_arrival_of_goods #приход
-
     @order = Order.new(order_params)
     #render(plain: params[:order])
 
     if @order.save then
+      quantity_order = @order.product.quantity + @order.quantity
+      product = Product.find(@order.product_id)
+      product.update(quantity: quantity_order)
+
+
       flash[:notice] = "#{@order.product.name} отправленно на склад"
       redirect_to('/arrival_of_goods')
     else
@@ -57,6 +61,10 @@ class OrdersController < ApplicationController
     #render(plain: params[:order])
 
     if @order.save then
+      quantity_order = @order.product.quantity - @order.quantity
+      product = Product.find(@order.product_id)
+      product.update(quantity: quantity_order)
+
       flash[:notice] = "#{@order.product.name} отправленно на #{@order.address}"
       redirect_to('/consumption_of_goods')
     else
@@ -67,11 +75,15 @@ class OrdersController < ApplicationController
   end
 
   def edit
-
+    @hidden_field = @order.movement_id.to_s
   end
 
   def update
+    new_quantity = update_order_product(@order, order_params)
+
     if @order.update(order_params) then
+      product = Product.find(@order.product_id)
+      product.update(quantity: new_quantity)
       flash[:notice] = 'Запись изменена'
       redirect_to(orders_path)
     else

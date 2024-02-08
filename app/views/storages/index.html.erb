@@ -1,40 +1,43 @@
-<% provide :page_title, 'All orders' %>
+<% provide :page_title, 'All products' %>
 <% provide :menu, currently_at('Склад')%>
 <% provide :mini_menu, currently_at_storage('') %>
+
 
 <section class="a-head">
 	<strong>index</strong>
 	<hr>	
 </section>
 
-<article class="content-main">
-	storage
+<article class="content-main">	
+	test
+
 
 	<table class="content-table text-size-l ">
 		<caption>
-			<span class="text-size-xl">Склад</span>
+			Все изделия
 		</caption>
 		<thead>
 			<tr>
 				<th>id</th>
-				<th>Название Изделия</th>
-				<th>Индификацинонный номер изделия</th>
-				<th>Количество</th>				
+				<th>Название</th>
+				<th>Индификацинонный номер</th>
 				<th>Назначение</th>
-				<th>Дата изменений</th>
-					
+				<th>Количество</th>
+				<th>Описание</th>
+				<th>Дата измененмя</th>		
 			</tr>
 		</thead>
 		<tbody>
-			<%@storages.each do |item| %>
-			<tr>
-				<td><%=item.id %></td>
-				<td><%=item.product.name %></td>
-				<td><%=item.product.ident_number %></td>
-				<td><%=item.quantity %></td>
-				<td><%=item.product.target.name %></td>				
-				<td><%=currect_date(item.updated_at) %></td>			
-			</tr>
+			<%@products.each do |p|%>
+				<tr>
+					<td><%= p.id%></td>
+					<td><%= p.name%></td>
+					<td><%= p.ident_number%></td>
+					<td><%= p.target.name%></td>
+					<td><%= negative_number(p.quantity) %></td>
+					<td><%= p.description%></td>					
+					<td><%= currect_date(p.updated_at)%></td>					
+				</tr>
 			<% end %>
 		</tbody>
 	</table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_01_123718) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,20 +48,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_123718) do
     t.string "name", null: false
     t.string "ident_number", null: false
     t.bigint "target_id", null: false
+    t.integer "quantity"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ident_number"], name: "index_products_on_ident_number", unique: true
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["target_id"], name: "index_products_on_target_id"
-  end
-
-  create_table "storages", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_storages_on_product_id"
   end
 
   create_table "targets", force: :cascade do |t|
@@ -74,5 +67,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_123718) do
   add_foreign_key "orders", "movements"
   add_foreign_key "orders", "products"
   add_foreign_key "products", "targets"
-  add_foreign_key "storages", "products"
 end

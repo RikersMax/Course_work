@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources 'orders', except: %i[show create]
 
+  resources 'storages'
+
   get '/arrival_of_goods', to: 'orders#arrival_of_goods'
   get '/consumption_of_goods', to: 'orders#consumption_of_goods'
 

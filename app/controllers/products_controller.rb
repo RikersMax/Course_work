@@ -15,7 +15,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    product_data = product_params
+    product_data[:quantity] = '0'
+    @product = Product.new(product_data)
 
     if @product.save then
       flash[:notice] = 'Изделие успешно создано'
