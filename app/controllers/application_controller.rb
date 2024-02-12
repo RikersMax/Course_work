@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
     quantity_product = order.product.quantity.to_i #-1
     quantity_order_new = order_params[:quantity].to_i # 15
 
-    if order_params[:movement_id] == '2' # расход
+    case order_params[:movement_id]
+    when '2'
       if quantity_order_new < quantity_order_old
         tmp = quantity_order_old - quantity_order_new
         new_quantity = quantity_product + tmp
@@ -15,9 +16,7 @@ class ApplicationController < ActionController::Base
         new_quantity = quantity_product - tmp
         return(new_quantity)
       end
-    end
-
-    if order_params[:movement_id] == '1'
+    when '1'
       if quantity_order_new < quantity_order_old
         tmp = quantity_order_old - quantity_order_new
         new_quantity = quantity_product - tmp

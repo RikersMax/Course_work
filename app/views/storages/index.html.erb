@@ -9,12 +9,9 @@
 </section>
 
 <article class="content-main">	
-	test
-
-
 	<table class="content-table text-size-l ">
 		<caption>
-			Все изделия
+			Склад
 		</caption>
 		<thead>
 			<tr>
@@ -36,7 +33,8 @@
 					<td><%= p.target.name%></td>
 					<td><%= negative_number(p.quantity) %></td>
 					<td><%= p.description%></td>					
-					<td><%= currect_date(p.updated_at)%></td>					
+					<td><%= currect_date(p.updated_at)%></td>	
+					<td><%= link_to('Изменить', edit_storage_path(p), class: 'table-link-info') %></td>				
 				</tr>
 			<% end %>
 		</tbody>

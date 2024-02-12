@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)  then
+      falsh[:notice] = 'Изделие изменено'
       redirect_to(products_path)
     else
       flash.now[:danger] = 'Ошибка ввода'
