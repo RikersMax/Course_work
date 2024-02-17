@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,14 +57,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_092544) do
     t.index ["target_id"], name: "index_products_on_target_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "targets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "login", null: false
+    t.string "password"
+    t.bigint "employee_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_users_on_employee_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
   add_foreign_key "orders", "employees"
   add_foreign_key "orders", "movements"
   add_foreign_key "orders", "products"
   add_foreign_key "products", "targets"
+  add_foreign_key "users", "employees"
+  add_foreign_key "users", "roles"
 end

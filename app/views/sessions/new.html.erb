@@ -1,0 +1,26 @@
+<% provide :page_title, 'Sign in' %>
+<% provide :menu, currently_at('')%>
+<% provide :mini_menu, currently_at_user('') %>
+
+
+<section class="a-head">
+	<strong>Sign in</strong>
+	<hr>	
+</section>
+
+<article class="content-main">
+	<p>Войти в систему</p>
+	<%= form_with url: session_path, data: {turbo: false} do |f| %>
+	<div>
+		<%= f.label :login, 'Логин' %>
+		<%= f.text_field :login %>		
+	</div>
+
+	<div>
+		<%= f.label :password, 'Пароль' %>
+		<%= f. text_field :password%>
+	</div>
+
+	<%= f.submit('Войти') %>
+	<% end %>
+</article>

@@ -61,6 +61,10 @@ module ApplicationHelper
     render(partial: 'shared/mini_bar_storage', locals: {current_page: current_page})
   end
 
+  def currently_at_user(current_page = '')
+    render(partial: 'shared/mini_bar_user', locals: {current_page: current_page})
+  end
+
 
 
 end

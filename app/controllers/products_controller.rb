@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action(:require_authentcation)
   before_action(:product_find, only: %i[edit show destroy update])
   before_action(:target_select, only: %i[edit show new update create])
 

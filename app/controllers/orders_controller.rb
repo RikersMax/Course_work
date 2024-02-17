@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action(:require_authentcation)
   before_action(:order_find, only: %i[edit update destroy])
   before_action(:product_select, only: %i[
     arrival_of_goods
@@ -8,7 +9,7 @@ class OrdersController < ApplicationController
     edit
     update])
 
-  before_action(:employeer_select, only: %i[
+  before_action(:employee_select, only: %i[
     arrival_of_goods
     consumption_of_goods
     create_arrival_of_goods
@@ -109,8 +110,8 @@ class OrdersController < ApplicationController
     @products = Product.all.map{|p| [p.name, p.id]}
   end
 
-  def employeer_select
-    @employeer = Employee.all.map{|e| [e.name, e.id]}
+  def employee_select
+    @employee = Employee.all.map{|e| [e.name, e.id]}
   end
 
   def order_params

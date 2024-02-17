@@ -1,4 +1,5 @@
 class StoragesController < ApplicationController
+  before_action(:require_authentcation)
 
   def index
     @products = Product.order(id: :desc)
