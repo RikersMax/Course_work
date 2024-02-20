@@ -14,7 +14,7 @@ header {
 main {
 	grid-column: 2/12;
 	grid-row: 2/3;
-	min-height: 80vh;
+	min-height: 100vh;
 	background-color: #7184a3;
 }
 

@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   resources 'orders', except: %i[show create]
 
+  resources 'storages', except: %i[show create destroy]
+
+  resources 'users'
+
+  resource 'session', only: %i[new create destroy]
+
   get '/arrival_of_goods', to: 'orders#arrival_of_goods'
   get '/consumption_of_goods', to: 'orders#consumption_of_goods'
 

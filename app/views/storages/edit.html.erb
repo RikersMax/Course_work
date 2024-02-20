@@ -1,0 +1,30 @@
+<% provide :page_title, 'All products' %>
+<% provide :menu, currently_at('Склад')%>
+<% provide :mini_menu, currently_at_storage('') %>
+
+
+<section class="a-head">
+	<strong>Изменить количество изделия на складе</strong>
+	<hr>	
+</section>
+
+<article class="content-main">	
+	<%=form_with model: @product, method: :patch, url: "/storages/#{@product.id}", data: {turbo: false} do |f| %>
+		<div>
+			<p>Название - <%=@product.name %></p>
+			<p>Индификацинонный номер - <%=@product.ident_number %></p>			
+			<p>Дата измененмя - <%= currect_date(@product.updated_at)%></p>
+		</div>
+
+		<div>
+			<%=f.label :quantity, 'Количество' %>
+			<%=f.number_field :quantity %>
+		</div>
+		<div>
+			<%= f.submit('Изменить') %>
+		</div>
+		<div>
+			<%=link_to('Назад', storages_path) %>
+		</div>
+	<%end %>
+</article>

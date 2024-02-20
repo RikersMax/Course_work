@@ -1,0 +1,14 @@
+<% provide :page_title, 'Sign up' %>
+<% provide :menu, currently_at(current_user.role.name.to_s)%>
+<% provide :mini_menu, currently_at_user('Создать нового пользователя') %>
+
+
+<section class="a-head">
+	<strong>Sign up</strong>
+	<hr>	
+</section>
+
+<article class="content-main">
+	<p>Создать пользователя</p>
+	<%=render('form', object: @user) %>	
+</article>

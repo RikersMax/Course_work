@@ -29,6 +29,22 @@ module ApplicationHelper
     return(link_to(title, url, options))
   end
 
+  def consumption_arrival(object)
+    if object == 'Приход' then
+      return("<sapn style='color: #60b56e;'>#{object}</span>".html_safe)
+    elsif object == 'Расход' then
+      return("<sapn style='color: #9c2b2e;'>#{object}</span>".html_safe)
+    end
+  end
+
+  def negative_number(object)
+    if object < 0 then
+      return("<span class='text-danger'>#{object}</sapn>".html_safe)
+    else
+      return(object)
+    end
+  end
+
   def currently_at(current_page = '')
     render(partial: 'shared/menu', locals: {current_page: current_page})
   end
@@ -41,11 +57,14 @@ module ApplicationHelper
     render(partial: 'shared/mini_bar_order', locals: {current_page: current_page})
   end
 
-  def consumption_arrival(object)
-    if object == 'Приход' then
-      return("<sapn style='color: #60b56e;'>#{object}</span>".html_safe)
-    elsif object == 'Расход' then
-      return("<sapn style='color: #9c2b2e;'>#{object}</span>".html_safe)
-    end
+  def currently_at_storage(current_page = '')
+    render(partial: 'shared/mini_bar_storage', locals: {current_page: current_page})
   end
+
+  def currently_at_user(current_page = '')
+    render(partial: 'shared/mini_bar_user', locals: {current_page: current_page})
+  end
+
+
+
 end

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action(:require_authentcation)
   before_action(:product_find, only: %i[edit show destroy update])
   before_action(:target_select, only: %i[edit show new update create])
 
@@ -15,7 +16,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    product_data = product_params
+    product_data[:quantity] = '0'
+    @product = Product.new(product_data)
 
     if @product.save then
       flash[:notice] = 'Изделие успешно создано'
@@ -32,6 +35,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)  then
+      falsh[:notice] = 'Изделие изменено'
       redirect_to(products_path)
     else
       flash.now[:danger] = 'Ошибка ввода'

@@ -1,0 +1,25 @@
+<% provide :page_title, 'Show user' %>
+<% provide :menu, currently_at(current_user.role.name.to_s)%>
+<% provide :mini_menu, currently_at_user('Список пользователей') %>
+
+
+<section class="a-head">
+	<strong>Сотрудник</strong>
+	<hr>	
+</section>
+
+<article class="content-main">
+	<section class="text-size-xl">
+		<p><b><%= @user.employee.name %></b></p>
+		<p>Должность - <%= @user.employee.job_title %></p>
+		<p>Табельный номер - <%= @user.employee.number%></p>
+		<p>Права доступа - <%= @user.role.name %></p>
+		<hr>
+		<p>Логин - <%= @user.login %></p>
+		<p>Пароль - <%= @user.password %></p>
+		<hr>
+		<p><%= link_to('Изменить', edit_user_path(@user) ) %></p>
+		<p><%= link_to('Удалить из системы', user_path(@user), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %></p>
+	</section>
+	
+</article>

@@ -56,3 +56,78 @@
 .mini-bar a:hover {
 	color: #b81c48;
 }
+
+/*user-bar*/
+
+.user-bar {
+	grid-column: 10/12;
+	grid-row: 1;
+	padding-bottom: 1em;
+}
+
+.user-bar ul {	
+	display: flex;
+	justify-content: flex-end;
+	gap: 1em;
+}
+
+.user-bar a {
+	color: white;
+	text-decoration: none;
+}
+
+.user-bar a:hover {
+	color: #b81c48;
+}
+
+/*mini-user-bar*/
+
+.mini-bar-user {
+	grid-row: 2;
+	grid-column: 10/12;
+	padding-bottom: 1em;
+}
+
+.mini-bar-user ul {	
+	display: flex;
+	justify-content: flex-end;
+	gap: 1em;
+}
+
+.mini-bar-user a {
+	color: white;
+	text-decoration: none;
+}
+
+.mini-bar-user a:hover {
+	color: #b81c48;
+}
+
+/*drop-down*/
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #142936;
+  min-width: 4em;
+  
+  padding: 10px 16px;
+  z-index: 1;
+
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+
+}
+.dropdown-ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	margin-top: 1em;
+}

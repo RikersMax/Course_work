@@ -1,4 +1,5 @@
 class TargetsController < ApplicationController
+  before_action(:require_authentcation)
   before_action(:target_find, only: %i[edit update destroy])
 
   def index
