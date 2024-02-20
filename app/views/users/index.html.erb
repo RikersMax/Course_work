@@ -1,4 +1,4 @@
-<% provide :page_title, 'All products' %>
+<% provide :page_title, 'All users' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
 <% provide :mini_menu, currently_at_user('Список пользователей') %>
 
@@ -9,6 +9,32 @@
 </section>
 
 <article class="content-main">	
-	
-	test
+
+	<table class="content-table text-size-l ">
+	<caption>
+		<span class="text-size-xl">Список сотрудников имеющих доступ в систему</span>
+	</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Сотрудник</th>			
+			<th>Парва доступа</th>
+			<th>Логин</th>
+			<th>Пароль</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%@users.each do |u|%>
+			<tr>
+				<td><%= u.id%></td>
+				<td><%= u.employee.name%></td>
+				<td><%= u.role.name%></td>
+				<td><%= u.login%></td>
+				<td><%= u.password%></td>
+				<td><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
+			</tr>
+		<% end %>
+	</tbody>
+	</table>
 </article>

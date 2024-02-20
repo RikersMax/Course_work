@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   before_action(:require_authentcation)
-  before_action(:employee_select, only: %i[new create])
-  before_action(:role_select, only: %i[new create])
+  before_action(:role_head_manager, only: %i[new create update destroy edit])
+  before_action(:employee_select, only: %i[new create show])
+  before_action(:role_select, only: %i[new create show edit])
+  before_action(:user_find, only: %i[show edit update destroy])
+
+  def index
+    @users = User.order(id: :asc)
+  end
 
   def new
     @user = User.new
@@ -18,10 +24,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @user.update(user_params) then
+      flash[:notice] = "Параметры пользователя #{@user.employee.name} обновлены"
+      redirect_to(users_path)
+    else
+      flash.now[:danger] = @user.errors.full_messages
+      render(:edit)
+    end
+  end
+
+  def destroy
+    flash[:info] = "#{@user.employee.name} удален"
+    @user.destroy
+    redirect_to(users_path)
+  end
+
   private
 
   def user_find
-    @user = User.find(:id)
+    @user = User.find(params[:id])
   end
 
   def user_params

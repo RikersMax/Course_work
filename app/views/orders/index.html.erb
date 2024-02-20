@@ -41,7 +41,7 @@
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
 				<td><%=currect_date(order.datestamp) %></td>
-				<td><%=link_to('Изменить', "/orders/#{order.id}/edit") %></td>
+				<td><%=link_to('Изменить', "/orders/#{order.id}/edit", class: 'table-link-info') %></td>
 			</tr>
 			<% end %>
 		</tbody>

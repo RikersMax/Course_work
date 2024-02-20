@@ -19,13 +19,9 @@
                 </li>
                 <hr>
                 <li>                                    
-                    <span><a href="#">Создать нового пользователя</a></span>                                
+                    <span><%= nav_tab('Создать нового пользователя', new_user_path, {current_page: current_page})%></span>
                 </li>
-                <hr>
-                <li>
-                  <span><a href="#">link</a></span>
-                </li>
-                <hr>
+                <hr>                                
                 <li>
                     <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete}) %></span>
                 </li>

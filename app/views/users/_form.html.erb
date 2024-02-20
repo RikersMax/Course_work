@@ -1,8 +1,10 @@
 <%= form_with model: object, data: {turbo: false} do |f| %>
+	<% if !object.persisted? %>
 	<div>
 		<%=f.label :employee_id, 'Сотрудник' %>
 		<%=f.select(:employee_id, @employee) %>
 	</div>
+	<% end %>
 
 	<div>
 		<%=f.label :role_id, 'Права сотрудника' %>
