@@ -14,17 +14,21 @@
         <span><%= nav_tab(current_user.role.name, users_path, {current_page: current_page})%>&#9660;</span>                      
         <div class="dropdown-content">
             <ul class="dropdown-ul">
-                <li>
-                    <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page}) %></span>    
-                </li>
-                <hr>
-                <li>                                    
-                    <span><%= nav_tab('Создать нового пользователя', new_user_path, {current_page: current_page})%></span>
-                </li>
-                <hr>                                
-                <li>
-                    <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete}) %></span>
-                </li>
+              <li>
+                <span><%= nav_tab('Профиль', user_path(current_user), {current_page: current_page}) %></span>  
+              </li>
+              <hr>
+              <li>
+                  <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page}) %></span>    
+              </li>
+              <hr>
+              <li>                                    
+                  <span><%= nav_tab('Создать нового пользователя', new_user_path, {current_page: current_page})%></span>
+              </li>
+              <hr>                                
+              <li>
+                  <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete}) %></span>
+              </li>
             </ul>
         </div>
     </div> 
@@ -39,7 +43,7 @@
     <% if user_signed_in? then %>
       <li class="text-secondary"><%=current_user.employee.name %></li>
     <% else %>
-      <li>test</li>
+      <li class="text-secondary">Имя пользователя</li>
     <% end %>
   </ul>
 </div>

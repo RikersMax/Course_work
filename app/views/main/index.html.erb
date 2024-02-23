@@ -1,27 +1,14 @@
 <% provide :menu, currently_at('Main')%>
 
 <section class="a-head">
-	<h1>Main#index</h1>
+	<strong>Главная</strong>
+	<hr>
 </section>
 <article class="content-main">
-	<p>Find me in app/views/main/index.html.erb</p>
-	<p><%=params[:my_name] %> - My</p>
-	<p><%= current_user.inspect %></p>
 	<% if !user_signed_in? then %>
-		<p><b>Вход в систему</b></p>
-		<%= form_with url: session_path, data: {turbo: false} do |f| %>
-		<div>
-			<%= f.label :login, 'Логин' %>
-			<%= f.text_field :login %>		
-		</div>
-
-		<div>
-			<%= f.label :password, 'Пароль' %>
-			<%= f. text_field :password%>
-		</div>
-
-		<%= f.submit('Войти') %>
-		<% end %>
-	<% end %>	
+		<%= render('sessions/form') %>
+	<% else %>
+		<p>main#index</p>
+	<%end %>
 </article>
 

@@ -7,8 +7,8 @@ module AuthenticationRoles
     def role_head_manager
       return if current_user.role.role == 'head_manager'
 
-      flash[:info] = 'Действие доступно только Начальнику цеха'
-      redirect_to(users_path)
+      flash[:info] = 'Действие доступно только Начальника цеха'
+      redirect_to(root_path)
     end
 
   end

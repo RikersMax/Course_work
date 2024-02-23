@@ -1,0 +1,27 @@
+<section class="form-conteiner text-size-xl">
+		<div class="form-session">
+			<span>Вход</span>
+			<%= form_with url: session_path, data: {turbo: false} do |f| %>
+				<div class="input-field">
+					<p><%= f.label :login, 'Введите логин:', class: 'text-size-l' %></p>
+					<p><%= f.text_field :login , {placeholder: 'Логин'}%></p>
+				</div>
+
+				<div class="input-field">
+					<p><%= f.label :password, 'Введите пароль:', class: 'text-size-l' %></p>
+					<p><%= f. text_field :password, {placeholder: 'Пароль'}%></p>
+				</div>
+
+				<div class="form-btn">
+					<%= f.submit('Войти', class: 'btn-info') %>				
+				</div>
+			<% end %>
+			<section class="supprot-content-login">
+				<span class="text-secondary text-size-l">Если забыли логин или пароль:</span>
+				<div class="text-secondary text-size-l">
+					<p>Номер отдела: 88003553535</p>
+					<p>Почта отдела: supprot@test.com</p>					
+				</div>
+			</section>	
+		</div>		
+</section>

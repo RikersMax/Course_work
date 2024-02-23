@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(login: params[:login])
     if user&.persisted? then
       sign_in(user) if user.password == params[:password]
-      flash[:notice] = 'Вы вошли в систему'
+      flash[:notice] = 'Вы вошли'
       redirect_to(root_path)
     else
       flash[:danger] = 'Ошибка ввода'
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    flash[:notice] = 'Вы вышли из системы'
+    flash[:notice] = 'Вы вышли'
     redirect_to(root_path)
   end
 

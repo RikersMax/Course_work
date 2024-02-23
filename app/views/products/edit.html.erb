@@ -8,8 +8,8 @@
 </section>
 
 <article class="content-main">
-	<div>
-		<span class="text-size-xl">Изделие - <%=@product.name %></span>
-	</div>
-	<%=render('form', object: @product) %>
+	<section class="text-size-l">
+		<p>Изделие - <%=@product.name %></p>	
+		<%=render('form', object: @product) %>		
+	</section>
 </article>

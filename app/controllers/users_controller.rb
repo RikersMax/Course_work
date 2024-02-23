@@ -43,9 +43,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    flash[:info] = "#{@user.employee.name} удален"
-    @user.destroy
-    redirect_to(users_path)
+    if current_user != @user then
+      flash[:info] = "#{@user.employee.name} удален"
+      @user.destroy
+      redirect_to(users_path)
+    else
+      flash[:danger] = "Вы не можете удалить сами себя"
+      redirect_to(users_path)
+    end
   end
 
   private

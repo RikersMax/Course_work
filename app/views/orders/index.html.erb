@@ -11,7 +11,7 @@
 		
 	<table class="content-table text-size-l ">
 		<caption>
-			<span class="text-size-xl">Все изделия</span>
+			<span class="text-size-xl">История</span>
 		</caption>
 		<thead>
 			<tr>
@@ -25,6 +25,7 @@
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
+				<th>Бригада №</th>
 					
 			</tr>
 		</thead>
@@ -41,7 +42,7 @@
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
 				<td><%=currect_date(order.datestamp) %></td>
-				<td><%=link_to('Изменить', "/orders/#{order.id}/edit", class: 'table-link-info') %></td>
+				<td>1</td>
 			</tr>
 			<% end %>
 		</tbody>

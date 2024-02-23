@@ -1,28 +1,28 @@
 <%= form_with model: object, data: {turbo: false} do |f| %>
 	<% if !object.persisted? %>
-	<div>
-		<%=f.label :employee_id, 'Сотрудник' %>
-		<%=f.select(:employee_id, @employee) %>
+	<div class="input-field">
+		<p><%=f.label :employee_id, 'Сотрудник' %></p>
+		<p><%=f.select(:employee_id, @employee) %></p>
 	</div>
 	<% end %>
 
-	<div>
-		<%=f.label :role_id, 'Права сотрудника' %>
-		<%=f.select(:role_id, @role) %>
+	<div class="input-field">
+		<p><%=f.label :role_id, 'Права сотрудника' %></p>
+		<p><%=f.select(:role_id, @role) %></p>
 	</div>
 
-	<div>
-		<%=f.label :login, 'Логин' %>
-		<%=f.text_field :login %>
+	<div class="input-field">
+		<p><%=f.label :login, 'Логин пользователя' %></p>
+		<p><%=f.text_field :login, {placeholder: 'Логин'} %></p>
 	</div>
 
-	<div>
-		<%=f.label :password, 'Пароль' %>
-		<%=f.text_field :password %>
+	<div class="input-field">
+		<p><%=f.label :password, 'Пароль пользователя' %></p>
+		<p><%=f.text_field :password, {placeholder: 'Пароль'} %></p>
 	</div>
 
-	<div>
-		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
+	<div class="form-btn">
+		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
 	</div>
 	
 <% end %>

@@ -1,5 +1,6 @@
 class StoragesController < ApplicationController
   before_action(:require_authentcation)
+  before_action(:role_head_manager, only: %i[edit update])
 
   def index
     @products = Product.order(id: :desc)
