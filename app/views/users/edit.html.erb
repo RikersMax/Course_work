@@ -9,12 +9,6 @@
 </section>
 
 <article class="content-main">
-	<section class="text-size-xl">
-		<p><b><%= @user.employee.name %></b></p>	
-	</section>
-	<hr>
-	<section class="text-size-xl">
 		<%= render('form', object: @user) %>
-		<p><%= link_to('Назад', user_path) %></p>
-	</section>
+		<p><%= link_to('Назад', user_path) %></p>	
 </article>

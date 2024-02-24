@@ -8,8 +8,5 @@
 </section>
 
 <article class="content-main">
-	<p>id - <%=@order.id %></p>
-
-	<%=render(partial: 'form', locals: {object: @order, url: order_path}) %>
-	<span><%=link_to('Удалить', order_path(@order), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %></span>
+	<%=render(partial: 'form', locals: {object: @order, url: order_path}) %>	
 </article>

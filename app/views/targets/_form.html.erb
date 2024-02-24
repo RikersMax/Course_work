@@ -1,11 +1,16 @@
-<%= form_with model: object, data: {turbo: false} do |f| %>
-	<div>
-		<p><%=f.label :name, 'Название'%></p>
-		<p><%=f.text_area :name, size: '50x5' %></p>		
-	</div>
+<section class="form-conteiner text-size-xl">
+	<div class="form-session">
+		<span>Новое назначение для изделий</span>
+	<%= form_with model: object, data: {turbo: false} do |f| %>
+		<div class="input-field">
+			<p><%=f.label :name, 'Название:'%></p>
+			<p><%=f.text_field :name %></p>		
+		</div>
 
-	<div>		
-		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
-	</div>
+		<div class="form-btn">		
+			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
+		</div>
 
-<% end %>
+	<% end %>
+	</div>
+</section>

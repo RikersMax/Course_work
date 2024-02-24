@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 
   def arrival_of_goods #приход
     @hidden_field = '1'
+    @name_form = 'Приход'
 
     @orders = product_movement_id(1)
     @order = Order.new
@@ -31,6 +32,7 @@ class OrdersController < ApplicationController
 
   def consumption_of_goods #расод
     @hidden_field = '2'
+    @name_form = 'Расход'
 
     @orders = product_movement_id(2)
     @order = Order.new
@@ -76,6 +78,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @name_form = 'Изменить'
     @hidden_field = @order.movement_id.to_s
   end
 
@@ -94,8 +97,10 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    flash[:info] = 'Запись удалена'
+    update_product_delete_order(@order)
+
     @order.destroy
+    flash[:info] = 'Запись удалена'
     redirect_to(orders_path)
   end
 

@@ -30,4 +30,18 @@ module OrderConcern
         end
       end
     end
+
+    def update_product_delete_order(order)
+
+      product = order.product
+
+      case order.movement_id.to_s
+      when '1'
+        quantity_new = product.quantity.to_i - order.quantity.to_i
+        product.update(quantity: quantity_new)
+      when '2'
+        quantity_new = product.quantity.to_i + order.quantity.to_i
+        product.update(quantity: quantity_new)
+      end
+    end
 end

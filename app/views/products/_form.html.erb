@@ -1,31 +1,36 @@
-<%= form_with model: object, data: {turbo: false} do |f| %>
-	<div>
-		<%=f.label :name, 'название' %>
-		<%=f.text_field :name %>		
-	</div>
+<section class="form-conteiner text-size-xl">
+	<div class="form-session">
+		<span>Новое изделие</span>
+		<%= form_with model: object, data: {turbo: false} do |f| %>
+			<div class="input-field">
+				<p><%=f.label :name, 'Название:', class: 'text-size-l' %></p>
+				<p><%=f.text_field :name %></p>
+			</div>
 
-	<div>
-		<%=f.label :ident_number, 'Индификацинонный номер' %>
-		<%=f.text_field :ident_number %>		
-	</div>
+			<div class="input-field">
+				<p><%=f.label :ident_number, 'Индификацинонный номер:', class: 'text-size-l' %></p>
+				<p><%=f.text_field :ident_number %></p>	
+			</div>
 
-	<div>
-		<%=f.label :target_id, 'Назначение' %>
-		<%=f.select(:target_id, @targets) %>
-	</div>
+			<div class="input-field">
+				<p><%=f.label :target_id, 'Назначение:', class: 'text-size-l' %></p>
+				<p><%=f.select(:target_id, @targets) %></p>
+			</div>
 
-	<div>
-		<%=f.label :description, 'описание' %>
-		<%=f.text_field :description %>		
-	</div>	
+			<div class="input-field">
+				<p><%=f.label :description, 'Описание:', class: 'text-size-l' %></p>
+				<p><%=f.text_field :description %></p>	
+			</div>	
 
-	<div>		
-		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
-	</div>
+			<div class="form-btn">		
+				<p><%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %></p>
+			</div>
 
-	<% if object.persisted? %>
-	<div>
-		<%= link_to('Нзад', product_path(object))%>
+			<% if object.persisted? %>
+			<div class="form-btn">
+				<p><%= link_to('Нзад', product_path(object), class: 'btn-success')%></p>
+			</div>
+			<% end %>
+		<% end %>
 	</div>
-	<% end %>
-<% end %>
+</section>

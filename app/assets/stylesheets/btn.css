@@ -2,6 +2,8 @@
 /*btn*/
 
 .btn-success {
+	color: #000;
+	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #60b56e;
@@ -9,6 +11,8 @@
 }
 
 .btn-danger {
+	color: #000;
+	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #9c2b2e;
@@ -16,6 +20,8 @@
 }
 
 .btn-info {
+	color: #000;
+	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #7eb9d6;

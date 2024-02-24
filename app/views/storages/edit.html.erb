@@ -8,23 +8,28 @@
 	<hr>	
 </section>
 
-<article class="content-main">	
-	<%=form_with model: @product, method: :patch, url: "/storages/#{@product.id}", data: {turbo: false} do |f| %>
-		<div>
-			<p>Название - <%=@product.name %></p>
-			<p>Индификацинонный номер - <%=@product.ident_number %></p>			
-			<p>Дата измененмя - <%= currect_date(@product.updated_at)%></p>
-		</div>
+<article class="content-main">
+	<section class="form-conteiner text-size-xl">
+		<div class="form-session" style="width: 500px;">
+		<span>Изменить</span>
+			<%=form_with model: @product, method: :patch, url: "/storages/#{@product.id}", data: {turbo: false} do |f| %>
+				<div class="input-field">
+					<p>Название - <%=@product.name %></p>
+					<p>Индификацинонный номер - <%=@product.ident_number %></p>			
+					<p>Дата измененмя - <%= currect_date(@product.updated_at)%></p>
+				</div>
 
-		<div>
-			<%=f.label :quantity, 'Количество' %>
-			<%=f.number_field :quantity %>
+				<div class="input-field">
+					<p><%=f.label :quantity, 'Количество на складе:' %></p>
+					<p><%=f.number_field :quantity %></p>
+				</div>
+				<div class="form-btn">
+					<p><%= f.submit('Изменить', class: 'btn-success') %></p>
+				</div>
+				<div class="form-btn">
+					<p><%=link_to('Назад', storages_path, class: 'btn-info') %></p>
+				</div>
+			<%end %>
 		</div>
-		<div>
-			<%= f.submit('Изменить') %>
-		</div>
-		<div>
-			<%=link_to('Назад', storages_path) %>
-		</div>
-	<%end %>
+	</section>
 </article>

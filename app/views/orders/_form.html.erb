@@ -1,45 +1,55 @@
-<%= form_with model: object, url: (url ||= object), data: {turbo: false} do |f| %>
-	<div>
-		<%= f.label :product_id, 'Изделие' %>
-		<%= f.select(:product_id, @products) %>
-	</div>
-
-	<div>
-		<%= f.label :quantity, 'Колтчество' %>
-		<%= f.number_field :quantity %>
-	</div>
-
-	<div>
-		<%= f.label :employee_id, 'Сотрутдник' %>
-		<%= f.select(:employee_id, @employee) %>
-	</div>
-
-	<% if @hidden_field == '1' then %>
-		<div>		
-			<%= f.hidden_field :address, value: 'Склад' %>
+<section class="form-conteiner text-size-xl">
+	<div class="form-session">
+		<span><%=@name_form %></span>
+	<%= form_with model: object, url: (url ||= object) do |f| %>
+		<div class="input-field">
+			<p><%= f.label :product_id, 'Изделие:', class: 'text-size-l' %></p>
+			<p><%= f.select(:product_id, @products) %></p>
 		</div>
-	<% else %>
-		<div>
-			<%= f.label :address, 'Место отправки' %>
-			<%= f.text_field :address %>
+
+		<div class="input-field">
+			<p><%= f.label :quantity, 'Колтчество:', class: 'text-size-l' %></p>
+			<p><%= f.number_field :quantity %></p>
 		</div>
+
+		<div class="input-field">
+			<p><%= f.label :employee_id, 'Сотрутдник:', class: 'text-size-l' %></p>
+			<p><%= f.select(:employee_id, @employee) %></p>
+		</div>
+
+		<% if @hidden_field == '1' then %>
+			<div class="input-field">		
+				<p><%= f.hidden_field :address, value: 'Склад', class: 'text-size-l' %></p>
+			</div>
+		<% else %>
+			<div class="input-field">
+				<p><%= f.label :address, 'Место отправки:', class: 'text-size-l' %></p>
+				<p><%= f.text_field :address %></p>
+			</div>
+		<% end %>
+
+		<div class="input-field">
+			<p><%= f.label :description, 'Примечание:', class: 'text-size-l' %></p>
+			<p><%= f.text_field :description %></p>
+		</div>
+
+		<div class="input-field">
+			<p><%= f.label :datestamp, 'Дата:', class: 'text-size-l' %></p>
+			<p><%= f.date_field :datestamp, value: currect_date(Time.now) %></p>
+		</div>
+
+		<div class="input-field">
+			<p><%= f.hidden_field :movement_id, value: @hidden_field %></p>
+		</div>
+
+		<div class="form-btn">
+			<p><%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %></p>
+		</div>
+		<% if object.persisted?%>
+		<div class="form-btn">
+			<p><%=link_to('Удалить', order_path(object), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn-danger') %></p>
+		</div>
+		<%end %>
 	<% end %>
-
-	<div>
-		<%= f.label :description, 'Примечание' %>
-		<%= f.text_field :description %>
 	</div>
-
-	<div>
-		<%= f.label :datestamp, 'Дата' %>
-		<%= f.date_field :datestamp, value: currect_date(Time.now) %>
-	</div>
-
-	<div>
-		<%= f.hidden_field :movement_id, value: @hidden_field %>
-	</div>
-
-	<div>
-		<%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
-	</div>
-<% end %>
+</section>
