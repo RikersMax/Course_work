@@ -10,7 +10,7 @@
 
 <article class="content-main">	
 
-<table class="content-table text-size-l">
+<table class="content-table ">
 	<caption>
 		<sapn class="text-size-xl">Все изделия</sapn>
 	</caption>
@@ -23,6 +23,7 @@
 			<th>Описание</th>
 			<th>Дата создания</th>
 			<th>Дата измененмя</th>
+			<th>Информация</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -35,7 +36,7 @@
 				<td><%= p.description%></td>
 				<td><%= currect_date(p.created_at)%></td>
 				<td><%= currect_date(p.updated_at)%></td>
-				<td><%= link_to('Информация', product_path(p), class: 'table-link-info')%></td>
+				<td style="text-align: center;"><%= link_to('Подробно', product_path(p), class: 'table-link-info')%></td>
 			</tr>
 		<% end %>
 	</tbody>

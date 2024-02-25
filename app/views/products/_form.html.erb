@@ -1,6 +1,6 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
-		<span>Новое изделие</span>
+		<span class="name-head"><%= object.persisted? ? 'Внести изменения' : 'Новое изделие' %></span>
 		<%= form_with model: object, data: {turbo: false} do |f| %>
 			<div class="input-field">
 				<p><%=f.label :name, 'Название:', class: 'text-size-l' %></p>
@@ -28,7 +28,7 @@
 
 			<% if object.persisted? %>
 			<div class="form-btn">
-				<p><%= link_to('Нзад', product_path(object), class: 'btn-success')%></p>
+				<p><%= link_to('Нзад', product_path(object), class: 'btn-info')%></p>
 			</div>
 			<% end %>
 		<% end %>

@@ -9,7 +9,7 @@
 </section>
 
 <article class="content-main">	
-	<table class="content-table text-size-l">
+	<table class="content-table">
 		<caption>
 			<sapn class="text-size-xl">Склад</sapn>
 		</caption>
@@ -21,7 +21,8 @@
 				<th>Назначение</th>
 				<th>Количество</th>
 				<th>Описание</th>
-				<th>Дата измененмя</th>		
+				<th>Дата измененмя</th>
+				<th>Изменить Количество</th>	
 			</tr>
 		</thead>
 		<tbody>
@@ -34,7 +35,7 @@
 					<td><%= negative_number(p.quantity) %></td>
 					<td><%= p.description%></td>					
 					<td><%= currect_date(p.updated_at)%></td>	
-					<td><%= link_to('Изменить', edit_storage_path(p), class: 'table-link-info') %></td>				
+					<td style="text-align: center;"><%= link_to('Изменить', edit_storage_path(p), class: 'table-link-info') %></td>
 				</tr>
 			<% end %>
 		</tbody>

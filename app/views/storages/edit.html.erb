@@ -11,12 +11,15 @@
 <article class="content-main">
 	<section class="form-conteiner text-size-xl">
 		<div class="form-session" style="width: 500px;">
-		<span>Изменить</span>
+		<span class="name-head">Изменить количество</span>
 			<%=form_with model: @product, method: :patch, url: "/storages/#{@product.id}", data: {turbo: false} do |f| %>
-				<div class="input-field">
+				<div class="text-form-contend">
 					<p>Название - <%=@product.name %></p>
 					<p>Индификацинонный номер - <%=@product.ident_number %></p>			
-					<p>Дата измененмя - <%= currect_date(@product.updated_at)%></p>
+					<p>Дата изменения - <%= currect_date(@product.updated_at)%></p>
+				</div>
+				<div class="hr-line">
+					<hr>
 				</div>
 
 				<div class="input-field">
@@ -24,7 +27,7 @@
 					<p><%=f.number_field :quantity %></p>
 				</div>
 				<div class="form-btn">
-					<p><%= f.submit('Изменить', class: 'btn-success') %></p>
+					<p><%= f.submit('Сохранить', class: 'btn-success') %></p>
 				</div>
 				<div class="form-btn">
 					<p><%=link_to('Назад', storages_path, class: 'btn-info') %></p>

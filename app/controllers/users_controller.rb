@@ -17,9 +17,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save then
       flash[:notice] = 'Вы создали пользователя'
-      redirect_to(root_path)
+      redirect_to(users_path)
     else
-      flash[:danger] = @user.errors.full_messages
+      flash.now[:danger] = @user.errors.full_messages
       render(:new)
     end
   end
@@ -44,8 +44,8 @@ class UsersController < ApplicationController
 
   def destroy
     if current_user != @user then
-      flash[:info] = "#{@user.employee.name} удален"
       @user.destroy
+      flash[:info] = "#{@user.employee.name} удален"
       redirect_to(users_path)
     else
       flash[:danger] = "Вы не можете удалить сами себя"

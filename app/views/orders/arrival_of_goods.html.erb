@@ -10,7 +10,7 @@
 <article class="content-main">	
 	<%=render(partial: 'form', locals: {object: @order, url: '/create_arrival_of_goods'}) %>
 
-	<table class="content-table text-size-l ">
+	<table class="content-table">
 		<caption class="text-size-l">
 			Поступления на склад за период с <b><%=(Time.now.midnight-1.day).strftime('%Y-%m-%d %H:%M')%></b> 
 							по <b><%= (Time.now.end_of_day).strftime('%Y-%m-%d %H:%M') %></b>
@@ -27,7 +27,7 @@
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
-					
+				<th>Действие</th>					
 			</tr>
 		</thead>
 		<tbody>
@@ -43,7 +43,7 @@
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
 				<td><%=currect_date(order.datestamp) %></td>
-				<td><%=link_to('Изменить', "/orders/#{order.id}/edit") %></td>
+				<td style="text-align: center;"><%=link_to('Изменить', "/orders/#{order.id}/edit", class: 'table-link-info') %></td>
 			</tr>
 			<% end %>
 		</tbody>

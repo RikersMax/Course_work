@@ -15,10 +15,10 @@
 	border: solid 1px;
 	
 	min-width: 350px;
-	padding-bottom: 1em;
+	padding-bottom: 10px;	
 }
 
-.form-session > span {	
+.form-session > .name-head {	
 	background-color: #7eb9d6;
 	text-align: center;
 	width: 100%;
@@ -60,6 +60,7 @@
 	display: flex;
 	justify-content: center;
 	padding: 0.5rem;
+	height: 45px;
 }
 
 .input-select {
@@ -70,6 +71,13 @@
 	color: #1c87c9;
 	background-color: #eee;
 	border-radius: 5px;
+}
+
+.text-form-contend {	
+}
+
+.text-form-contend p {
+	padding-bottom: 5px;
 }
 
 /*form-errors*/
@@ -89,6 +97,8 @@
 .supprot-content-login {
 	display: block;
 	width: 100%;
-	padding: 1em 0 0 0;
-	
+	padding: 1em 0 1em 0;
 }
+
+
+

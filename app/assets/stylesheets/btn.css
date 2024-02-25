@@ -8,6 +8,7 @@
 	text-decoration: none;
 	background-color: #60b56e;
 	padding: 10px 20px;
+	border-radius: 5px;
 }
 
 .btn-danger {
@@ -15,8 +16,9 @@
 	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
-	background-color: #9c2b2e;
+	background-color: #db5757;
 	padding: 10px 20px;
+	border-radius: 5px;
 }
 
 .btn-info {
@@ -26,6 +28,7 @@
 	text-decoration: none;
 	background-color: #7eb9d6;
 	padding: 10px 20px;
+	border-radius: 5px;
 }
 
 .btn-success:hover {
@@ -33,7 +36,7 @@
 }
 
 .btn-danger:hover {
-	background-color: #e84e4f;
+	background-color: #e48181;
 }
 
 .btn-info:hover {

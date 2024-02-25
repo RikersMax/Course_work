@@ -1,6 +1,6 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
-		<span>Новое назначение для изделий</span>
+		<span class="name-head"><%= object.persisted? ? 'Внести изменения' : 'Новое назначение' %></span>
 	<%= form_with model: object, data: {turbo: false} do |f| %>
 		<div class="input-field">
 			<p><%=f.label :name, 'Название:'%></p>

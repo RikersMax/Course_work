@@ -10,7 +10,7 @@
 
 <article class="content-main">	
 
-	<table class="content-table text-size-l ">
+	<table class="content-table">
 	<caption>
 		<span class="text-size-xl">Список сотрудников имеющих доступ в систему</span>
 	</caption>
@@ -19,9 +19,7 @@
 			<th>id</th>
 			<th>Сотрудник</th>			
 			<th>Парва доступа</th>
-			<th>Логин</th>
-			<th>Пароль</th>
-			<th></th>
+			<th>Подробно</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,9 +28,7 @@
 				<td><%= u.id%></td>
 				<td><%= u.employee.name%></td>
 				<td><%= u.role.name%></td>
-				<td><%= u.login%></td>
-				<td><%= u.password%></td>
-				<td><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
+				<td style="text-align: center;"><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
 			</tr>
 		<% end %>
 	</tbody>

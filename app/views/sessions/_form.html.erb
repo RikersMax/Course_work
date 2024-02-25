@@ -1,6 +1,6 @@
 <section class="form-conteiner text-size-xl">
 		<div class="form-session">
-			<span>Вход</span>
+			<span class="name-head">Вход</span>
 			<%= form_with url: session_path, data: {turbo: false} do |f| %>
 				<div class="input-field">
 					<p><%= f.label :login, 'Введите логин:', class: 'text-size-l' %></p>

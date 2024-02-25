@@ -1,6 +1,6 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
-		<span><%=@name_form %></span>
+		<span class="name-head"><%=@name_form %></span>
 	<%= form_with model: object, url: (url ||= object) do |f| %>
 		<div class="input-field">
 			<p><%= f.label :product_id, 'Изделие:', class: 'text-size-l' %></p>
@@ -38,18 +38,29 @@
 			<p><%= f.date_field :datestamp, value: currect_date(Time.now) %></p>
 		</div>
 
-		<div class="input-field">
+		<div>
 			<p><%= f.hidden_field :movement_id, value: @hidden_field %></p>
 		</div>
 
 		<div class="form-btn">
-			<p><%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %></p>
+			<p><%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %></p>			
 		</div>
+
 		<% if object.persisted?%>
-		<div class="form-btn">
-			<p><%=link_to('Удалить', order_path(object), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn-danger') %></p>
-		</div>
+			<div class="form-btn">
+				<p><%=link_to('Удалить', order_path(object), 
+				data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, 
+				class: 'btn-danger') 
+				%></p>
+			</div>
 		<%end %>
+		
+		<% if object.persisted?%>
+			<div class="form-btn">
+				<p><%= link_to('Назад', orders_path, class: 'btn-info') %></p>
+			</div>
+		<%end %>
+
 	<% end %>
 	</div>
 </section>
