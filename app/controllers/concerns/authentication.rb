@@ -5,13 +5,13 @@ module Authentication
     private
 
     def require_authentcation
-      if current_user == nil then
-        redirect_to(root_path)
-      end
+      return unless current_user.nil?
+
+      redirect_to(root_path)
     end
 
     def require_no_authentcation
-      return if !user_signed_in?
+      return unless user_signed_in?
 
       flash[:info] = 'Вы уже вошли в систему'
       redirect_to(root_path)

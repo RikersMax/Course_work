@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save then
+    if @user.save
       flash[:notice] = 'Вы создали пользователя'
       redirect_to(users_path)
     else
@@ -24,16 +24,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def show; end
 
-  end
-
-  def edit
-
-  end
+  def edit; end
 
   def update
-    if @user.update(user_params) then
+    if @user.update(user_params)
       flash[:notice] = "Параметры пользователя #{@user.employee.name} обновлены"
       redirect_to(users_path)
     else
@@ -43,12 +39,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if current_user != @user then
+    if current_user == @user
+      flash[:danger] = "Вы не можете удалить сами себя"
+      redirect_to(users_path)
+    else then
       @user.destroy
       flash[:info] = "#{@user.employee.name} удален"
-      redirect_to(users_path)
-    else
-      flash[:danger] = "Вы не можете удалить сами себя"
       redirect_to(users_path)
     end
   end
@@ -60,14 +56,14 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:employee_id, :role_id, :login, :password)
+    params.require(:user).permit(:employee_id, :role_id, :login, :password)
   end
 
   def employee_select
-    @employee = Employee.order(name: :asc).map{|e| [e.name, e.id]}
+    @employee = Employee.order(name: :asc).map {|e| [e.name, e.id]}
   end
 
   def role_select
-    @role = Role.order(id: :asc).map{|r| [r.name, r.id]}
+    @role = Role.order(id: :asc).map {|r| [r.name, r.id]}
   end
 end

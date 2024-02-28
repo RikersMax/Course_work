@@ -7,20 +7,20 @@ class ProductsController < ApplicationController
     @products = Product.order(id: :desc)
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @product = Product.new
   end
+
+  def edit; end
 
   def create
     product_data = product_params
     product_data[:quantity] = '0'
     @product = Product.new(product_data)
 
-    if @product.save then
+    if @product.save
       flash[:notice] = 'Изделие успешно создано'
       redirect_to(products_path)
     else
@@ -29,19 +29,15 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
-    if @product.update(product_params)  then
+    if @product.update(product_params)
       flash[:notice] = 'Изделие изменено'
       redirect_to(products_path)
     else
       flash.now[:danger] = 'Ошибка ввода'
       render(:edit)
     end
-    #render(plain: params.to_yaml)
+    # render(plain: params.to_yaml)
   end
 
   def destroy
@@ -49,14 +45,13 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to(products_path)
 
-    #render(plain: params.to_yaml)
+    # render(plain: params.to_yaml)
   end
-
 
   private
 
   def target_select
-    @targets = Target.all.map{|t| [t.name, t.id]}
+    @targets = Target.all.map { |t| [t.name, t.id] }
   end
 
   def product_find
@@ -66,5 +61,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :ident_number, :target_id, :description)
   end
-
 end

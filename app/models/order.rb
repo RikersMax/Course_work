@@ -6,5 +6,4 @@ class Order < ApplicationRecord
   validates(:product_id, presence: true)
   validates(:quantity, presence: true)
   validates(:employee_id, presence: true)
-
 end

@@ -22,5 +22,4 @@ class StoragesController < ApplicationController
       render(:edit)
     end
   end
-
 end

@@ -10,9 +10,11 @@ class TargetsController < ApplicationController
     @target = Target.new
   end
 
+  def edit; end
+
   def create
     @target = Target.new(target_params)
-    if @target.save then
+    if @target.save
       flash[:notice] = 'Успешно создано'
       redirect_to(targets_path)
     else
@@ -21,12 +23,8 @@ class TargetsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
-    if @target.update(target_params) then
+    if @target.update(target_params)
       flash[:notice] = 'Успешно обновлено'
       redirect_to(targets_path)
     else
@@ -50,5 +48,4 @@ class TargetsController < ApplicationController
   def target_params
     params.require(:target).permit(:name)
   end
-
 end

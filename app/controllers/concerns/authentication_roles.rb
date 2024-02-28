@@ -10,7 +10,5 @@ module AuthenticationRoles
       flash[:info] = 'Действие доступно только Начальника цеха'
       redirect_to(root_path)
     end
-
   end
-
 end
