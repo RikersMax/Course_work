@@ -73,6 +73,21 @@
 	border-radius: 5px;
 }
 
+.input-check-box {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 0.5em;
+}
+
+.input-check-box label {	
+	margin-bottom: 5px;
+}
+
+.input-check-box input {	
+	width: 1.5em;
+	height: 1.5em;
+}
+
 .text-form-contend {	
 }
 
@@ -95,9 +110,8 @@
 /*support-content*/
 
 .supprot-content-login {
-	display: block;
-	width: 100%;
-	padding: 1em 0 1em 0;
+	display: block;	
+	padding: 1em 0 1em 0;	
 }
 
 

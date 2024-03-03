@@ -26,3 +26,22 @@
 .text-secondary {
 	color: #878a92;
 }
+
+/*text-padding*/
+
+.text-pt-s {
+	padding-top: 0.75rem;
+}
+
+.text-pt-l {
+	padding-top: 1rem;
+}
+
+.text-pb-s {	
+	margin-bottom: 0.75rem;
+}
+
+.text-pb-l {
+	padding-bottom: 1rem;
+}
+

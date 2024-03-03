@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     if current_user == @user
       flash[:danger] = "Вы не можете удалить сами себя"
       redirect_to(users_path)
-    else then
+    else
       @user.destroy
       flash[:info] = "#{@user.employee.name} удален"
       redirect_to(users_path)

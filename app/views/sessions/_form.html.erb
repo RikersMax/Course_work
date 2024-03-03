@@ -4,12 +4,16 @@
 			<%= form_with url: session_path, data: {turbo: false} do |f| %>
 				<div class="input-field">
 					<p><%= f.label :login, 'Введите логин:', class: 'text-size-l' %></p>
-					<p><%= f.text_field :login , {placeholder: 'Логин'}%></p>
+					<p><%= f.text_field :login , placeholder: 'Логин', value: params[:login]%></p>
 				</div>
 
 				<div class="input-field">
 					<p><%= f.label :password, 'Введите пароль:', class: 'text-size-l' %></p>
-					<p><%= f. text_field :password, {placeholder: 'Пароль'}%></p>
+					<p><%= f.text_field :password, {placeholder: 'Пароль'}%></p>
+				</div>
+				<div class="input-check-box">
+					<%= f.label(:remember_me, 'Запомнить', class: 'text-size-l') %>
+					<%= f.check_box(:remember_me, value: '1') %>
 				</div>
 
 				<div class="form-btn">
@@ -17,8 +21,8 @@
 				</div>
 			<% end %>
 			<section class="supprot-content-login">
-				<span class="text-secondary text-size-l">Если забыли логин или пароль:</span>
 				<div class="text-secondary text-size-l">
+				<p class='text-pb-s'>Если забыли логин или пароль:</p>
 					<p>Номер отдела: 88003553535</p>
 					<p>Почта отдела: supprot@test.com</p>					
 				</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_03_074141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remember_token_digest"
     t.index ["employee_id"], name: "index_users_on_employee_id"
     t.index ["role_id"], name: "index_users_on_role_id"
   end

@@ -4,17 +4,19 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(login: params[:login])
-    if user&.persisted?
-      sign_in(user) if user.password == params[:password]
+    if user&.persisted? && user.password == params[:password]
+      sign_in(user)
+      remember(user) if params[:remember_me] == '1'
       flash[:notice] = 'Вы вошли'
       redirect_to(root_path)
     else
-      flash[:danger] = 'Ошибка ввода'
+      flash.now[:danger] = 'Ошибка ввода'
       render(:new)
     end
   end
 
   def destroy
+    forget(current_user)
     sign_out
     flash[:notice] = 'Вы вышли'
     redirect_to(root_path)
