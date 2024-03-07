@@ -1,6 +1,9 @@
 class Employee < ApplicationRecord
-  has_one :order
-  has_many :user
+  has_many :order
+  has_one :user
 
   validates(:number, uniqueness: true)
+  validates(:number, length: {is: 4})
+
+  validates(:name, presence: true)
 end

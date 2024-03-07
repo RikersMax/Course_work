@@ -1,0 +1,34 @@
+<% provide :page_title, 'All orders' %>
+<% provide :menu, currently_at(current_user.role.name.to_s)%>
+<% provide :mini_menu, currently_at_user('Список сотрудников') %>
+
+<section class="a-head">
+	<strong>index</strong>
+	<hr>	
+</section>
+
+<article class="content-main">			
+	<table class="content-table">
+	<caption>
+		<span class="text-size-xl">Список сотрудников</span>
+	</caption>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Сотрудник</th>			
+			<th>Табельный номер</th>
+			<th>Подробно</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%@employees.each do |e|%>
+			<tr>
+				<td><%= e.id%></td>
+				<td><%= e.name%></td>
+				<td style="text-align: center;"><%= e.number%></td>
+				<td style="text-align: center;"><%= link_to('Информация', employee_path(e), class: 'table-link-info') %></td>			
+			</tr>
+		<% end %>
+	</tbody>
+	</table>
+</article>

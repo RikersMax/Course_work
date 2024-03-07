@@ -1,0 +1,12 @@
+<% provide :page_title, 'All orders' %>
+<% provide :menu, currently_at(current_user.role.name.to_s)%>
+<% provide :mini_menu, currently_at_user('Список сотрудников') %>
+
+<section class="a-head">
+	<strong>index</strong>
+	<hr>	
+</section>
+
+<article class="content-main">
+	<%=render(partial: 'form', locals: {object: @employee}) %>
+</article>

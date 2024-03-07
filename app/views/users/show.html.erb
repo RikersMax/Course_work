@@ -4,14 +4,14 @@
 
 
 <section class="a-head">
-	<strong>Сотрудник</strong>
+	<strong>Пользователь</strong>
 	<hr>	
 </section>
 
 <article class="content-main">
 	<section class="text-size-xl profile-main-container">
 		<div class="profile">
-			<span class="name-head ">Профиль сотрудника</span>
+			<span class="name-head ">Профиль пользователя</span>
 			<div class="profile-info">
 				<div class="profile-text">
 					<p><b><%= @user.employee.name %></b></p>				
@@ -19,8 +19,7 @@
 				<div class="hr-line">
 					<hr>					
 				</div>						
-				<div class="profile-text">
-					<p>Должность - <%= @user.employee.job_title %></p>
+				<div class="profile-text">					
 					<p>Табельный номер - <%= @user.employee.number%></p>
 				</div>
 				<div class="hr-line">
