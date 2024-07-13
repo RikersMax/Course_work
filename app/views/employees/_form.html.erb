@@ -16,9 +16,11 @@
 			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
 		</div>
 
-		<div class="form-btn">
-			<%= link_to('Назад', object.persisted? ? employee_path(object) : employees_path, class: 'btn-info') %>
-		</div>
+		<% if object.persisted? %>
+			<div class="form-btn">
+				<%= link_to('Назад', object.persisted? ? employee_path(object) : employees_path, class: 'btn-info') %>
+			</div>
+		<% end %>
 		
 	<% end %>
 	</div>

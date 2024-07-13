@@ -14,8 +14,7 @@
 			<span class="text-size-xl">История</span>
 		</caption>
 		<thead>
-			<tr>
-				<th>id</th>
+			<tr>				
 				<th>Название Изделия</th>
 				<th>Индификацинонный номер изделия</th>
 				<th>Количество</th>
@@ -25,15 +24,12 @@
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
-				<th>Бригада №</th>
-					
 			</tr>
 		</thead>
 		<tbody>
 			<%@orders.each do |order| %>
 			<tr>
-				<td><%=order.id %></td>
-				<td><%=order.product.name %></td>
+				<td class="td-center"><%=order.product.name %></td>
 				<td><%=order.product.ident_number %></td>
 				<td><%=order.quantity %></td>
 				<td><%=consumption_arrival(order.movement.name_movement)%></td>
@@ -41,8 +37,7 @@
 				<td><%=order.employee.name %></td>
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
-				<td><%=currect_date(order.datestamp) %></td>
-				<td>1</td>
+				<td class="td-center"><%=currect_date(order.datestamp) %></td>				
 			</tr>
 			<% end %>
 		</tbody>

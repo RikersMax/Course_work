@@ -46,6 +46,10 @@
 	background: #F7F7F7;
 }
 
+.td-center {
+	text-align: center;
+}
+
 /*table-link*/
 
 .table-link-info {

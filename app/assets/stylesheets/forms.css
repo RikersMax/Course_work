@@ -1,5 +1,6 @@
 
 /*forms*/
+
 .form-conteiner {
 	display: flex;
 	justify-content: center;
@@ -26,9 +27,14 @@
 	margin-bottom: 0.5em;
 }
 
-.input-field label {
-	display: block;	
-	margin-bottom: 5px;
+.input-select {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #999;
+	font-size: 18px;
+	color: #1c87c9;
+	background-color: #eee;
+	border-radius: 5px;
 }
 
 .form-session select {
@@ -42,6 +48,14 @@
 	padding: 0 10px 0 10px;
 }
 
+.input-field {
+	margin-bottom: 0.5em;
+}
+
+.input-field label {
+	display: block;	
+	margin-bottom: 5px;
+}
 
 .input-field input {
 	height: 2em;
@@ -52,25 +66,13 @@
 	border-radius: 5px;
 }
 
-.input-field {
-	margin-bottom: 0.5em;
-}
-
-.form-btn {
-	display: flex;
-	justify-content: center;
-	padding: 0.5rem;
-	height: 45px;
-}
-
-.input-select {
-	width: 120px;
-	height: 30px;
+.input-field textarea {
+	padding: 10px 10px 0 10px;
+	font-size: 0.7em;	
 	border: 1px solid #999;
-	font-size: 18px;
-	color: #1c87c9;
-	background-color: #eee;
+	color: #000;
 	border-radius: 5px;
+	resize: none;
 }
 
 .input-check-box {
@@ -88,12 +90,26 @@
 	height: 1.5em;
 }
 
-.text-form-contend {	
+.input-date {
+	margin-bottom: 0.5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input-date input {
+	height: 2em;
+	padding: 0 10px 0 10px;
+	font-size: 0.7em;	
+	border: 1px solid #999;
+	color: #000;
+	border-radius: 5px;
 }
 
 .text-form-contend p {
 	padding-bottom: 5px;
 }
+
 
 /*form-errors*/
 
@@ -115,4 +131,25 @@
 }
 
 
+/*btn*/
 
+.form-btn {
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+	height: 45px;
+}
+
+.form-btn-between {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0px;	
+	height: 45px;
+}
+
+.form-btn-around {
+	display: flex;
+	justify-content: space-around;
+	padding: 0.5rem;
+	height: 45px;
+}

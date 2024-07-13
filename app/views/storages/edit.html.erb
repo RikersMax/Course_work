@@ -26,12 +26,10 @@
 					<p><%=f.label :quantity, 'Количество на складе:' %></p>
 					<p><%=f.number_field :quantity %></p>
 				</div>
-				<div class="form-btn">
-					<p><%= f.submit('Сохранить', class: 'btn-success') %></p>
-				</div>
-				<div class="form-btn">
-					<p><%=link_to('Назад', storages_path, class: 'btn-info') %></p>
-				</div>
+				<div class="form-btn-around">					
+						<%=f.submit('Сохранить', class: 'btn-success') %>
+						<%=link_to('Назад', storages_path, class: 'btn-info') %>					
+				</div>				
 			<%end %>
 		</div>
 	</section>

@@ -10,13 +10,12 @@
 
 <article class="content-main">	
 
-	<table class="content-table">
+	<table class="content-table" style="width: 60%;">
 	<caption>
 		<span class="text-size-xl">Список сотрудников имеющих доступ в систему</span>
 	</caption>
 	<thead>
 		<tr>
-			<th>id</th>
 			<th>Сотрудник</th>			
 			<th>Парва доступа</th>
 			<th>Подробно</th>
@@ -24,8 +23,7 @@
 	</thead>
 	<tbody>
 		<%@users.each do |u|%>
-			<tr>
-				<td><%= u.id%></td>
+			<tr>			
 				<td><%= u.employee.name%></td>
 				<td><%= u.role.name%></td>
 				<td style="text-align: center;"><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			

@@ -9,12 +9,11 @@
 
 		<div class="input-field">
 			<p><%= f.label :quantity, 'Колтчество:', class: 'text-size-l' %></p>
-			<p><%= f.number_field :quantity %></p>
+			<p><%= f.number_field :quantity, placeholder: '0'%></p>
 		</div>
 
 		<div class="input-field">
-			<p><%= f.label :employee_id, 'Сотрутдник:', class: 'text-size-l' %></p>
-			<p><%= f.select(:employee_id, @employee) %></p>
+			<p><%= f.hidden_field(:employee_id, value: @current_user.employee_id) %></p>			
 		</div>
 
 		<% if @hidden_field == '1' then %>
@@ -24,43 +23,39 @@
 		<% else %>
 			<div class="input-field">
 				<p><%= f.label :address, 'Место отправки:', class: 'text-size-l' %></p>
-				<p><%= f.text_field :address %></p>
+				<p><%= f.text_field :address, placeholder: 'Адрес' %></p>
 			</div>
 		<% end %>
 
 		<div class="input-field">
 			<p><%= f.label :description, 'Примечание:', class: 'text-size-l' %></p>
-			<p><%= f.text_field :description %></p>
+			<p><%= f.text_area :description, rows: 6 %></p>
 		</div>
 
-		<div class="input-field">
-			<p><%= f.label :datestamp, 'Дата:', class: 'text-size-l' %></p>
-			<p><%= f.date_field :datestamp, value: currect_date(Time.now) %></p>
+		<div class="input-date">			
+			<%= f.label :datestamp, 'Дата:', class: 'text-size-l' %>
+			<%= f.date_field :datestamp, value: currect_date(Time.now) %>			
 		</div>
 
 		<div>
 			<p><%= f.hidden_field :movement_id, value: @hidden_field %></p>
 		</div>
 
-		<div class="form-btn">
-			<p><%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %></p>			
-		</div>
-
-		<% if object.persisted?%>
-			<div class="form-btn">
-				<p><%=link_to('Удалить', order_path(object), 
-				data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, 
-				class: 'btn-danger') 
-				%></p>
+		<% if object.persisted? %>
+			<div class="form-btn-between">
+				<%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>				
+				<%= link_to('Удалить', order_path(object), 
+					data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, 
+					class: 'btn-danger')%>
 			</div>
-		<%end %>
-		
-		<% if object.persisted?%>
 			<div class="form-btn">
-				<p><%= link_to('Назад', orders_path, class: 'btn-info') %></p>
+				<%= link_to('Назад', orders_path, class: 'btn-info') %>
 			</div>
-		<%end %>
-
+		<% else %>
+			<div class="form-btn">
+				<%= f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>				
+			</div>
+		<% end %>
 	<% end %>
 	</div>
 </section>

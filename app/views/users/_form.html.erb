@@ -1,37 +1,40 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
 		<span class="name-head"><%= object.persisted? ? object.employee.name : 'Новый пользователь'%></span>
-	<%= form_with model: object, data: {turbo: false} do |f| %>
-		<% if !object.persisted? %>
+	<%= form_with model: object, data: {turbo: false} do |f| %>		
 		<div class="input-field">
-			<p><%=f.label :employee_id, 'Сотрудник', class: 'text-size-l'%></p>
-			<p><%=f.select(:employee_id, @employee) %></p>
+			<p><%=f.label(:name, 'Имя сотрудника', class: 'text-size-l')%></p>
+			<p><%=f.text_field(:name, value: @employee ? @employee.name : object.employee.name) %></p>
 		</div>
-		<% end %>		
 
 		<div class="input-field">
-			<p><%=f.label :role_id, 'Права сотрудника', class: 'text-size-l'%></p>
+			<p><%=f.label(:number, 'Табельный номер', class: 'text-size-l') %></p>
+			<p><%=f.text_field(:number, value: @employee ? @employee.number : object.employee.number) %></p>
+		</div>
+
+		<div class="input-field">
+			<p><%=f.label(:role_id, 'Права сотрудника', class: 'text-size-l')%></p>
 			<p><%=f.select(:role_id, @role) %></p>
 		</div>
 
 		<div class="input-field">
-			<p><%=f.label :login, 'Логин пользователя', class: 'text-size-l'%></p>
-			<p><%=f.text_field :login, {placeholder: 'Логин'} %></p>
+			<p><%=f.label(:login, 'Логин пользователя', class: 'text-size-l')%></p>
+			<p><%=f.text_field(:login, {placeholder: 'Логин'})%></p>
 		</div>
 
 		<div class="input-field">
-			<p><%=f.label :password, 'Пароль пользователя', class: 'text-size-l' %></p>
-			<p><%=f.text_field :password, {placeholder: 'Пароль'} %></p>
+			<p><%=f.label(:password, 'Пароль пользователя', class: 'text-size-l')%></p>
+			<p><%=f.text_field(:password, {placeholder: 'Пароль'})%></p>
 		</div>
 
 		<div class="form-btn">
 			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
 		</div>
-
-		<div class="form-btn">
-			<%= link_to('Назад', object.persisted? ? user_path(object) : users_path, class: 'btn-info') %>
-		</div>
-		
+		<% if object.persisted? %>
+			<div class="form-btn">
+				<%=link_to('Назад', object.persisted? ? user_path(object) : users_path, class: 'btn-info') %>
+			</div>
+		<% end %>
 	<% end %>
 	</div>
 </section>

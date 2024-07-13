@@ -15,7 +15,6 @@
 		</caption>
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>Название</th>
 				<th>Индификацинонный номер</th>
 				<th>Назначение</th>
@@ -28,14 +27,13 @@
 		<tbody>
 			<%@products.each do |p|%>
 				<tr>
-					<td><%= p.id%></td>
-					<td><%= p.name%></td>
+					<td class="td-center" ><%= p.name%></td>
 					<td><%= p.ident_number%></td>
 					<td><%= p.target.name%></td>
 					<td><%= negative_number(p.quantity) %></td>
 					<td><%= p.description%></td>					
 					<td><%= currect_date(p.updated_at)%></td>	
-					<td style="text-align: center;"><%= link_to('Изменить', edit_storage_path(p), class: 'table-link-info') %></td>
+					<td class="td-center"><%= link_to('Изменить', edit_storage_path(p), class: 'table-link-info') %></td>
 				</tr>
 			<% end %>
 		</tbody>

@@ -2,33 +2,39 @@
 /*btn*/
 
 .btn-success {
+	box-sizing: border-box;
 	color: #000;
 	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #60b56e;
-	padding: 10px 20px;
+	padding: 10px 15px;
 	border-radius: 5px;
+	line-height: 1.5em;
 }
 
 .btn-danger {
+	box-sizing: border-box;
 	color: #000;
 	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #db5757;
-	padding: 10px 20px;
+	padding: 10px 15px;
 	border-radius: 5px;
+	line-height: 1.5em;
 }
 
-.btn-info {
+.btn-info {	
+	box-sizing: border-box;
 	color: #000;
 	font-size: 1rem;
 	cursor: pointer;
 	text-decoration: none;
 	background-color: #7eb9d6;
-	padding: 10px 20px;
+	padding: 10px 15px;
 	border-radius: 5px;
+	line-height: 1.5em;
 }
 
 .btn-success:hover {

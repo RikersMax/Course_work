@@ -8,13 +8,12 @@
 </section>
 
 <article class="content-main">			
-	<table class="content-table">
+	<table class="content-table" style="width: 60%;">
 	<caption>
 		<span class="text-size-xl">Список сотрудников</span>
 	</caption>
 	<thead>
-		<tr>
-			<th>id</th>
+		<tr>			
 			<th>Сотрудник</th>			
 			<th>Табельный номер</th>
 			<th>Подробно</th>
@@ -22,11 +21,10 @@
 	</thead>
 	<tbody>
 		<%@employees.each do |e|%>
-			<tr>
-				<td><%= e.id%></td>
+			<tr>				
 				<td><%= e.name%></td>
-				<td style="text-align: center;"><%= e.number%></td>
-				<td style="text-align: center;"><%= link_to('Информация', employee_path(e), class: 'table-link-info') %></td>			
+				<td class="td-center" ><%= e.number%></td>
+				<td class="td-center"><%= link_to('Информация', employee_path(e), class: 'table-link-info') %></td>			
 			</tr>
 		<% end %>
 	</tbody>

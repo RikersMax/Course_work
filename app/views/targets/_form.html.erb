@@ -1,16 +1,17 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
 		<span class="name-head"><%= object.persisted? ? 'Внести изменения' : 'Новое назначение' %></span>
-	<%= form_with model: object, data: {turbo: false} do |f| %>
-		<div class="input-field">
-			<p><%=f.label :name, 'Название:'%></p>
-			<p><%=f.text_field :name %></p>		
-		</div>
+		<%= form_with model: object, data: {turbo: false} do |f| %>
+			<div class="input-field">
+				<p><%=f.label :name, 'Название:'%></p>
+				<p><%=f.text_field :name %></p>		
+			</div>
 
-		<div class="form-btn">		
-			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
-		</div>
+			<div class="form-btn-between">		
+				<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
+				<%=link_to('Назад', targets_path, class: 'btn-info') %>
+			</div>
 
-	<% end %>
+		<% end %>
 	</div>
 </section>

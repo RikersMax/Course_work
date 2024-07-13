@@ -10,15 +10,6 @@ class OrdersController < ApplicationController
                   update
                 ])
 
-  before_action(:employee_select, only: %i[
-                  arrival_of_goods
-                  consumption_of_goods
-                  create_arrival_of_goods
-                  create_consumption_of_goods
-                  edit
-                  update
-                ])
-
   def index
     @orders = Order.order(id: :desc)
   end
@@ -110,10 +101,6 @@ class OrdersController < ApplicationController
 
   def product_select
     @products = Product.all.map { |p| [p.name, p.id] }
-  end
-
-  def employee_select
-    @employee = Employee.all.map { |e| [e.name, e.id] }
   end
 
   def order_params

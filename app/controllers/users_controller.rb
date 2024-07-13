@@ -10,11 +10,20 @@ class UsersController < ApplicationController
   end
 
   def new
+    @employee = Employee.new
     @user = User.new
   end
 
   def create
+    #render(plain: employee_params.to_yaml) and return
     @user = User.new(user_params)
+    @employee = Employee.new(employee_params)
+    if !@employee.save then
+      flash.now[:danger] = @employee.errors.full_messages
+      render(:new)
+    end
+
+    @user.employee_id = @employee.id
     if @user.save
       flash[:notice] = 'Вы создали пользователя'
       redirect_to(users_path)
@@ -24,11 +33,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
 
-  def edit; end
+  end
+
+  def edit
+
+  end
 
   def update
+    @employee = Employee.find(@user.employee_id)
+    if !@employee.update(employee_params)
+      flash.now[:danger] = @employee.errors.full_messages
+      render(:edit)
+    end
+
     if @user.update(user_params)
       flash[:notice] = "Параметры пользователя #{@user.employee.name} обновлены"
       redirect_to(users_path)
@@ -39,12 +58,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @employee = Employee.find(@user.employee_id)
+
     if current_user == @user
       flash[:danger] = "Вы не можете удалить сами себя"
       redirect_to(users_path)
     else
+      name = @employee.name
       @user.destroy
-      flash[:info] = "#{@user.employee.name} удален"
+      @employee.destroy
+      flash[:info] = "#{name} удален"
       redirect_to(users_path)
     end
   end
@@ -56,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:employee_id, :role_id, :login, :password)
+    params.require(:user).permit(:role_id, :login, :password)
   end
 
   def employee_select
@@ -65,5 +88,9 @@ class UsersController < ApplicationController
 
   def role_select
     @role = Role.order(id: :asc).map {|r| [r.name, r.id]}
+  end
+
+  def employee_params
+    params.require(:user).permit(:name, :number)
   end
 end

@@ -15,28 +15,24 @@
 		<sapn class="text-size-xl">Все изделия</sapn>
 	</caption>
 	<thead>
-		<tr>
-			<th>id</th>
+		<tr>			
 			<th>Название</th>
 			<th>Индификацинонный номер</th>
 			<th>Назначение</th>
 			<th>Описание</th>
 			<th>Дата создания</th>
 			<th>Дата измененмя</th>
-			<th>Информация</th>
 		</tr>
 	</thead>
 	<tbody>
 		<%@products.each do |p|%>
-			<tr>
-				<td><%= p.id%></td>
-				<td><%= p.name%></td>
+			<tr>				
+				<td class="td-center"><%= link_to(p.name, product_path(p), class: 'table-link-info')%></td>
 				<td><%= p.ident_number%></td>
 				<td><%= p.target.name%></td>
 				<td><%= p.description%></td>
-				<td><%= currect_date(p.created_at)%></td>
-				<td><%= currect_date(p.updated_at)%></td>
-				<td style="text-align: center;"><%= link_to('Подробно', product_path(p), class: 'table-link-info')%></td>
+				<td class="td-center"><%= currect_date(p.created_at)%></td>
+				<td class="td-center"><%= currect_date(p.updated_at)%></td>				
 			</tr>
 		<% end %>
 	</tbody>

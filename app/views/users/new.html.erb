@@ -9,5 +9,5 @@
 </section>
 
 <article class="content-main">	
-		<%=render('form', object: @user) %>				
+		<%=render(partial: 'form', locals: {object: @user, object_employee: @employee}) %>				
 </article>
