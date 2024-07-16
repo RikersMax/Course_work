@@ -9,12 +9,9 @@
 
 		<div class="input-field">
 			<p><%= f.label :quantity, 'Колтчество:', class: 'text-size-l' %></p>
-			<p><%= f.number_field :quantity, placeholder: '0'%></p>
+			<p><%= f.number_field :quantity, min: 0, placeholder: '0'%></p>
 		</div>
-
-		<div class="input-field">
-			<p><%= f.hidden_field(:employee_id, value: @current_user.employee_id) %></p>			
-		</div>
+		
 
 		<% if @hidden_field == '1' then %>
 			<div class="input-field">		

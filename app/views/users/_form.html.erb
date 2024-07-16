@@ -1,16 +1,11 @@
 <section class="form-conteiner text-size-xl">
 	<div class="form-session">
-		<span class="name-head"><%= object.persisted? ? object.employee.name : 'Новый пользователь'%></span>
+		<span class="name-head"><%= object.persisted? ? object.fio : 'Новый пользователь'%></span>
 	<%= form_with model: object, data: {turbo: false} do |f| %>		
 		<div class="input-field">
-			<p><%=f.label(:name, 'Имя сотрудника', class: 'text-size-l')%></p>
-			<p><%=f.text_field(:name, value: @employee ? @employee.name : object.employee.name) %></p>
-		</div>
-
-		<div class="input-field">
-			<p><%=f.label(:number, 'Табельный номер', class: 'text-size-l') %></p>
-			<p><%=f.text_field(:number, value: @employee ? @employee.number : object.employee.number) %></p>
-		</div>
+			<p><%=f.label(:fio, 'ФИО', class: 'text-size-l')%></p>			
+			<p><%=f.text_field(:fio, {placeholder: 'Имя пользователя'}) %></p>
+		</div>		
 
 		<div class="input-field">
 			<p><%=f.label(:role_id, 'Права сотрудника', class: 'text-size-l')%></p>
@@ -26,7 +21,7 @@
 			<p><%=f.label(:password, 'Пароль пользователя', class: 'text-size-l')%></p>
 			<p><%=f.text_field(:password, {placeholder: 'Пароль'})%></p>
 		</div>
-
+		
 		<div class="form-btn">
 			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
 		</div>
@@ -35,6 +30,35 @@
 				<%=link_to('Назад', object.persisted? ? user_path(object) : users_path, class: 'btn-info') %>
 			</div>
 		<% end %>
+	
 	<% end %>
 	</div>
+</section>
+<section class="text-size-xl profile-main-container">
+		<div class="description-container">
+			<span class="description-name-head">Описание ролей</span>
+		<div class="description-items-all">
+			<div class="description-item">
+				<%=label(:Viewer, 'Viewer', class: 'class-item-role') %>
+				<p id="Viewer">Может просматривать элементы не требующие авторизации.</p>				
+			</div>
+			<div class="description-item">				
+				<%=label(:Field_Worker, 'Field Worker', class: 'class-item-role') %>
+				<p id="Field_Worker">Может просматривать и редактировать данные.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Creator, 'Creator' , class: 'class-item-role') %>
+				<p id="Creator">Может создавать, просматривать и редактировать данные.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Master, 'Master', class: 'class-item-role') %>
+				<p id="Master">Может создавать, просматривать и редактировать данные, а также добавлять и удалять пользователей.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Admin, 'Admin', class: 'class-item-role') %>
+				<p id="Admin">Обладает все правами Master, необходим для редактрования и отладки приложения.</p>
+			</div>
+		</div>
+		</div>	
+
 </section>

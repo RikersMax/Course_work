@@ -7,12 +7,16 @@ class TargetsController < ApplicationController
   end
 
   def new
+    role_check([3, 4, 5])
     @target = Target.new
   end
 
-  def edit; end
+  def edit
+    role_check([3, 4, 5])
+  end
 
   def create
+    role_check([3, 4, 5])
     @target = Target.new(target_params)
     if @target.save
       flash[:notice] = 'Успешно создано'
@@ -24,6 +28,7 @@ class TargetsController < ApplicationController
   end
 
   def update
+    role_check([3, 4, 5])
     if @target.update(target_params)
       flash[:notice] = 'Успешно обновлено'
       redirect_to(targets_path)
@@ -34,6 +39,7 @@ class TargetsController < ApplicationController
   end
 
   def destroy
+    role_check([3, 4, 5])
     @target.destroy
     flash[:info] = "#{@target.name} удалено"
     redirect_to(targets_path)

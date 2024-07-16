@@ -20,7 +20,7 @@
 				<th>Количество</th>
 				<th>Приход-Расход</th>
 				<th>Назначение</th>
-				<th>Сотрудник</th>
+				
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
@@ -34,7 +34,7 @@
 				<td><%=order.quantity %></td>
 				<td><%=consumption_arrival(order.movement.name_movement)%></td>
 				<td><%=order.product.target.name %></td>
-				<td><%=order.employee.name %></td>
+				
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
 				<td class="td-center"><%=currect_date(order.datestamp) %></td>				

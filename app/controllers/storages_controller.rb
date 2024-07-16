@@ -1,16 +1,18 @@
 class StoragesController < ApplicationController
   before_action(:require_authentcation)
-  before_action(:role_head_manager, only: %i[edit update])
 
   def index
+    role_check([1, 2, 3, 4, 5])
     @products = Product.order(id: :desc)
   end
 
   def edit
+    role_check([2, 3, 4, 5])
     @product = Product.find(params[:id])
   end
 
   def update
+    role_check([2, 3, 4, 5])
     permit_params = params.require(:product).permit(:quantity)
     @product = Product.find(params[:id])
 
@@ -22,4 +24,7 @@ class StoragesController < ApplicationController
       render(:edit)
     end
   end
+
+
+
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources 'products'
 
-  resources 'employees'
+
 
   resources 'targets', except: %i[show]
 

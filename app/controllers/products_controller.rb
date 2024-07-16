@@ -4,18 +4,26 @@ class ProductsController < ApplicationController
   before_action(:target_select, only: %i[edit show new update create])
 
   def index
+    role_check([1, 2, 3, 4, 5])
     @products = Product.order(id: :desc)
+
   end
 
-  def show; end
+  def show
+    role_check([1, 2, 3, 4, 5])
+  end
 
   def new
+    role_check([3, 4, 5])
     @product = Product.new
   end
 
-  def edit; end
+  def edit
+    role_check([3, 4, 5])
+  end
 
   def create
+    role_check([3, 4, 5])
     product_data = product_params
     product_data[:quantity] = '0'
     @product = Product.new(product_data)
@@ -30,6 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    role_check([3, 4, 5])
     if @product.update(product_params)
       flash[:notice] = 'Изделие изменено'
       redirect_to(products_path)
@@ -41,6 +50,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    role_check([3, 4, 5])
     flash[:info] = "#{@product.name} удалено"
     @product.destroy
     redirect_to(products_path)
@@ -61,4 +71,6 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :ident_number, :target_id, :description)
   end
+
+
 end

@@ -24,7 +24,7 @@
 	<tbody>
 		<%@users.each do |u|%>
 			<tr>			
-				<td><%= u.employee.name%></td>
+				<td><%= u.fio %></td>
 				<td><%= u.role.name%></td>
 				<td style="text-align: center;"><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
 			</tr>

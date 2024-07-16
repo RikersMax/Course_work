@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
-  belongs_to :employee
   belongs_to :role
 
   validates(:login, presence: true)

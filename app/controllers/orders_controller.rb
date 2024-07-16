@@ -2,19 +2,20 @@ class OrdersController < ApplicationController
   before_action(:require_authentcation)
   before_action(:order_find, only: %i[edit update destroy])
   before_action(:product_select, only: %i[
-                  arrival_of_goods
-                  consumption_of_goods
-                  create_arrival_of_goods
-                  create_consumption_of_goods
-                  edit
-                  update
-                ])
+    arrival_of_goods
+    consumption_of_goods
+    create_arrival_of_goods
+    create_consumption_of_goods
+    edit
+    update
+  ])
 
   def index
     @orders = Order.order(id: :desc)
   end
 
   def arrival_of_goods # приход
+    role_check([3, 4, 5])
     @hidden_field = '1'
     @name_form = 'Приход'
 
@@ -23,6 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def consumption_of_goods # расод
+    role_check([3, 4, 5])
     @hidden_field = '2'
     @name_form = 'Расход'
 
@@ -31,6 +33,7 @@ class OrdersController < ApplicationController
   end
 
   def create_arrival_of_goods # приход
+    role_check([3, 4, 5])
     @order = Order.new(order_params)
     # render(plain: params[:order])
 
@@ -49,6 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def create_consumption_of_goods # расод
+    role_check([3, 4, 5])
     @order = Order.new(order_params)
     # render(plain: params[:order])
 
@@ -67,11 +71,13 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    role_check([3, 4, 5])
     @name_form = 'Изменить'
     @hidden_field = @order.movement_id.to_s
   end
 
   def update
+    role_check([3, 4, 5])
     new_quantity = update_order_product(@order, order_params)
 
     if @order.update(order_params)
@@ -86,6 +92,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    role_check([3, 4, 5])
     update_product_delete_order(@order)
 
     @order.destroy

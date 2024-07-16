@@ -41,7 +41,7 @@
 <div class="mini-bar-user">
   <ul>
     <% if user_signed_in? then %>
-      <li class="text-secondary"><%=current_user.employee.name %></li>
+      <li class="text-secondary"><%=current_user.fio %></li>
     <% else %>
       <li class="text-secondary">Имя пользователя</li>
     <% end %>

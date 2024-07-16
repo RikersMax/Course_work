@@ -84,6 +84,7 @@
 	display: flex;
 	flex-direction: column;	
 	background-color: #c4d8ed;	
+	max-width: 30%;
 }
 
 .hr-line {
@@ -104,7 +105,7 @@
 	margin-bottom: 0.5em;
 }
 
-.profile-info {
+.profile-info {	
 	margin: 0 1em 1em 1em;
 }
 
@@ -120,4 +121,30 @@
 
 .profile-text p {
 	margin: 5px 0 5px 0;
+}
+
+.description-container {
+	display: flex;
+	flex-direction: column;	
+	background-color: #c4d8ed;
+	max-width: 50%;	
+}
+
+.description-name-head {
+	background-color: #7eb9d6;
+	text-align: center;
+	width: 100%;
+	line-height: 2;	
+}
+
+.description-items-all {
+	padding: 1em 1em 0.5em 1em;
+}
+
+.description-item {
+	padding-bottom: 1em;
+}
+
+.class-item-role {
+	color: #1a8cff;
 }

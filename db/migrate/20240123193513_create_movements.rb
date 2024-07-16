@@ -6,4 +6,13 @@ class CreateMovements < ActiveRecord::Migration[7.1]
       t.timestamps
     end
   end
+
+  Movement.create([
+    {
+      name_movement: 'Приход'
+    },
+    {
+      name_movement: 'Расход'
+    }
+  ])
 end

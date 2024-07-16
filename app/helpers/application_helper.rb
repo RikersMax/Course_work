@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+
   def submit_text(form_object, if_exists: 'exists', if_not_exists: 'not exists')
     form_object.object.persisted? ? if_exists : if_not_exists
   end
