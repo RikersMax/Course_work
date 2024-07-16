@@ -1,9 +1,9 @@
 <% provide :page_title, 'Intake' %>
 <% provide :menu, currently_at('Приход-Расход')%>
-<% provide :mini_menu, currently_at_order('') %>
+<% provide :mini_menu, currently_at_mini_menu(@order.movement.name_movement , 'shared/mini_bar_order') %>
 
 <section class="a-head">
-	<strong>edit</strong>
+	<strong>edit</strong>	
 	<hr>	
 </section>
 

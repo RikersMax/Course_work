@@ -1,6 +1,6 @@
 <% provide :page_title, 'Sign up' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('Создать нового пользователя') %>
+<% provide :mini_menu, currently_at_mini_menu('Создать нового пользователя', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">

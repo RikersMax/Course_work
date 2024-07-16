@@ -123,11 +123,14 @@
 	margin: 5px 0 5px 0;
 }
 
+/*description*/
+
 .description-container {
 	display: flex;
 	flex-direction: column;	
 	background-color: #c4d8ed;
-	max-width: 50%;	
+	max-width: 50%;
+	border: solid 1px;	
 }
 
 .description-name-head {

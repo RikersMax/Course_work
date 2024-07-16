@@ -1,6 +1,6 @@
 <% provide :page_title, 'All users' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('Список пользователей') %>
+<% provide :mini_menu, currently_at_mini_menu('Список пользователей', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">

@@ -47,19 +47,7 @@ module ApplicationHelper
     render(partial: 'shared/menu', locals: { current_page: })
   end
 
-  def currently_at_prod(current_page = '')
-    render(partial: 'shared/mini_bar_prod', locals: { current_page: })
-  end
-
-  def currently_at_order(current_page = '')
-    render(partial: 'shared/mini_bar_order', locals: { current_page: })
-  end
-
-  def currently_at_storage(current_page = '')
-    render(partial: 'shared/mini_bar_storage', locals: { current_page: })
-  end
-
-  def currently_at_user(current_page = '')
-    render(partial: 'shared/mini_bar_user', locals: { current_page: })
+  def currently_at_mini_menu(current_page = '', shared = '')
+    render(partial: shared, locals: { current_page: })
   end
 end

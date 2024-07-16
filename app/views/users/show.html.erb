@@ -1,6 +1,6 @@
 <% provide :page_title, 'Show user' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('') %>
+<% provide :mini_menu, currently_at_mini_menu('', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">
