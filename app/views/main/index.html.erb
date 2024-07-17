@@ -1,14 +1,14 @@
-<% provide :menu, currently_at('Main')%>
+<% provide :menu, currently_at('Главная')%>
 
-<section class="a-head">
-	<strong>Главная</strong>
+
+<section class="a-head">	
 	<hr>
 </section>
 <article class="content-main">
 	<% if !user_signed_in? then %>
 		<%= render('sessions/form') %>
 	<% else %>
-		<p>main#index</p>
+		<strong>Главная</strong>
 	<%end %>
 </article>
 

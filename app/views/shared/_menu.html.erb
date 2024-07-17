@@ -1,6 +1,7 @@
 
 <div class="nav-bar">
   <ul>
+    <li><%= nav_tab('Главная', root_path, {current_page: current_page})%></li>
     <li><%= nav_tab('Изделия', products_path, {current_page: current_page}) %></li>
     <li><%= nav_tab('Приход-Расход', orders_path, {current_page: current_page}) %></li>
     <li><%= nav_tab('Склад', storages_path, {current_page: current_page}) %></li>          
@@ -13,13 +14,13 @@
     <div class="dropdown">
         <span><%= nav_tab(current_user.role.name, users_path, {current_page: current_page})%>&#9660;</span>                      
         <div class="dropdown-content">
-            <ul class="dropdown-ul">
+            <ul class="dropdown-ul">              
               <li>
-                <span><%= nav_tab('Профиль', user_path(current_user), {current_page: current_page}) %></span>  
+                <span><%= nav_tab('Профиль', user_path(current_user), {current_page: current_page})%></span>  
               </li>
               <hr>
               <li>
-                  <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page}) %></span>    
+                  <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page})%></span>    
               </li>
               <hr>
               <li>                                    
@@ -27,7 +28,7 @@
               </li>
               <hr>                                
               <li>
-                  <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete}) %></span>
+                  <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete})%></span>
               </li>
             </ul>
         </div>

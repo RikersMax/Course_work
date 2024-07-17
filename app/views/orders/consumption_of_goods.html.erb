@@ -2,8 +2,7 @@
 <% provide :menu, currently_at('Приход-Расход')%>
 <% provide :mini_menu, currently_at_mini_menu('Расход', 'shared/mini_bar_order') %>
 
-<section class="a-head">
-	<strong>consumption of goods</strong>
+<section class="a-head">	
 	<hr>	
 </section>
 
@@ -12,8 +11,8 @@
 <% if @orders.present? %>
 	<table class="content-table">
 		<caption class="text-size-l">
-			Отправка изделий за период с <b><%=(Time.now.midnight-1.day).strftime('%Y-%m-%d %H:%M')%></b> 
-							по <b><%= (Time.now.end_of_day).strftime('%Y-%m-%d %H:%M') %></b>
+			Отправка изделий за период с <b><%=(Time.now.midnight-1.day).strftime('%d-%m-%Y %H:%M')%></b> 
+							по <b><%= (Time.now.end_of_day).strftime('%d-%m-%Y %H:%M') %></b>
 		</caption>
 		<thead>
 			<tr>
