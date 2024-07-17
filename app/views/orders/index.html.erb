@@ -1,47 +1,42 @@
 <% provide :page_title, 'All orders' %>
 <% provide :menu, currently_at('Приход-Расход')%>
-<% provide :mini_menu, currently_at_order('История') %>
+<% provide :mini_menu, currently_at_mini_menu('История', 'shared/mini_bar_order') %>
 
 <section class="a-head">
-	<strong>index</strong>
 	<hr>	
 </section>
 
 <article class="content-main">
 		
-	<table class="content-table text-size-l ">
+	<table class="content-table">
 		<caption>
-			<span class="text-size-xl">Все изделия</span>
+			<span class="text-size-xl">История</span>
 		</caption>
 		<thead>
-			<tr>
-				<th>id</th>
+			<tr>				
 				<th>Название Изделия</th>
 				<th>Индификацинонный номер изделия</th>
 				<th>Количество</th>
 				<th>Приход-Расход</th>
 				<th>Назначение</th>
-				<th>Сотрудник</th>
+				
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
-					
 			</tr>
 		</thead>
 		<tbody>
 			<%@orders.each do |order| %>
 			<tr>
-				<td><%=order.id %></td>
-				<td><%=order.product.name %></td>
+				<td class="td-center"><%=order.product.name %></td>
 				<td><%=order.product.ident_number %></td>
 				<td><%=order.quantity %></td>
 				<td><%=consumption_arrival(order.movement.name_movement)%></td>
 				<td><%=order.product.target.name %></td>
-				<td><%=order.employee.name %></td>
+				
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
-				<td><%=currect_date(order.datestamp) %></td>
-				<td><%=link_to('Изменить', "/orders/#{order.id}/edit", class: 'table-link-info') %></td>
+				<td class="td-center"><%=currect_date(order.datestamp) %></td>				
 			</tr>
 			<% end %>
 		</tbody>

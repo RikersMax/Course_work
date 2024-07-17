@@ -1,20 +1,12 @@
 <% provide :page_title, 'Edit user' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('Список пользователей') %>
+<% provide :mini_menu, currently_at_mini_menu('Список пользователей', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">
-	<strong>edit</strong>
 	<hr>	
 </section>
 
 <article class="content-main">
-	<section class="text-size-xl">
-		<p><b><%= @user.employee.name %></b></p>	
-	</section>
-	<hr>
-	<section class="text-size-xl">
-		<%= render('form', object: @user) %>
-		<p><%= link_to('Назад', user_path) %></p>
-	</section>
+		<%= render('form', object: @user) %>			
 </article>

@@ -1,53 +1,48 @@
 <% provide :page_title, 'Intake' %>
 <% provide :menu, currently_at('Приход-Расход')%>
-<% provide :mini_menu, currently_at_order('Расход') %>
+<% provide :mini_menu, currently_at_mini_menu('Расход', 'shared/mini_bar_order') %>
 
-<section class="a-head">
-	<strong>consumption of goods</strong>
+<section class="a-head">	
 	<hr>	
 </section>
 
-<article class="content-main">
-	расход
+<article class="content-main">	
 	<%=render(partial: 'form', locals: {object: @order, url: '/create_consumption_of_goods'}) %>
-
-	<table class="content-table text-size-l ">
-		<caption>
-			Отправка изделий за период с <b><%=(Time.now.midnight-1.day).strftime('%Y-%m-%d %H:%M')%></b> 
-							по <b><%= (Time.now.end_of_day).strftime('%Y-%m-%d %H:%M') %></b>
+<% if @orders.present? %>
+	<table class="content-table">
+		<caption class="text-size-l">
+			Отправка изделий за период с <b><%=(Time.now.midnight-1.day).strftime('%d-%m-%Y %H:%M')%></b> 
+							по <b><%= (Time.now.end_of_day).strftime('%d-%m-%Y %H:%M') %></b>
 		</caption>
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>Название Изделия</th>
 				<th>Индификацинонный номер изделия</th>
 				<th>Количество</th>
-				<th>Расход</th>
 				<th>Назначение</th>
-				<th>Сотрудник</th>
+				
 				<th>Адрес</th>
 				<th>Примечание</th>
 				<th>Дата</th>
+				<th>Действие</th>
 					
 			</tr>
 		</thead>
 		<tbody>
 			<%@orders.each do |order| %>
 			<tr>
-				<td><%=order.id %></td>
-				<td><%=order.product.name %></td>
+				<td class="td-center"><%=order.product.name %></td>
 				<td><%=order.product.ident_number %></td>
 				<td><%=order.quantity %></td>
-				<td><%=consumption_arrival(order.movement.name_movement)%></td>
 				<td><%=order.product.target.name %></td>
-				<td><%=order.employee.name %></td>
+				
 				<td><%=order.address %></td>
 				<td><%=order.description %></td>
 				<td><%=currect_date(order.datestamp) %></td>
-				<td><%=link_to('Изменить', "/orders/#{order.id}/edit") %></td>
+				<td class="td-center"><%=link_to('Изменить', "/orders/#{order.id}/edit", class: 'table-link-info') %></td>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
-	
+<% end %>	
 </article>

@@ -5,20 +5,28 @@ module Authentication
     private
 
     def require_authentcation
-      if current_user == nil then
-        redirect_to(root_path)
-      end
+      return unless current_user.nil?
+
+      redirect_to(root_path)
     end
 
     def require_no_authentcation
-      return if !user_signed_in?
+      return unless user_signed_in?
 
       flash[:info] = 'Вы уже вошли в систему'
       redirect_to(root_path)
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id].present?
+      if session[:user_id].present?
+        @current_user ||= User.find_by(id: session[:user_id])
+      elsif cookies.encrypted[:user_id].present?
+        user = User.find_by(id: cookies.encrypted[:user_id])
+        if user&.remember_token_authenticated?(cookies.encrypted[:remember_token])
+          sign_in(user)
+          @current_user ||= user
+        end
+      end
     end
 
     def user_signed_in?
@@ -27,6 +35,18 @@ module Authentication
 
     def sign_in(user)
       session[:user_id] = user.id
+    end
+
+    def remember(user)
+      user.remember_me
+      cookies.encrypted.permanent[:remember_token] = user.remember_token
+      cookies.encrypted.permanent[:user_id] = user.id
+    end
+
+    def forget(user)
+      user.forget_me
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
     end
 
     def sign_out

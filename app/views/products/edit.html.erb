@@ -1,15 +1,11 @@
 <% provide :page_title, 'Edit products' %>
 <% provide :menu, currently_at('Изделия')%>
-<% provide :mini_menu, currently_at_prod('Все изделия') %>
+<% provide :mini_menu, currently_at_mini_menu('Все изделия', 'shared/mini_bar_prod') %>
 
-<section class="a-head">
-	<strong>edit</strong>	
+<section class="a-head">	
 	<hr>
 </section>
 
-<article class="content-main">
-	<div>
-		<span class="text-size-xl">Изделие - <%=@product.name %></span>
-	</div>
-	<%=render('form', object: @product) %>
+<article class="content-main">			
+		<%=render('form', object: @product) %>	
 </article>

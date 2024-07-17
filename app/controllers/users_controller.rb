@@ -1,25 +1,30 @@
 class UsersController < ApplicationController
   before_action(:require_authentcation)
-  before_action(:role_head_manager, only: %i[new create update destroy edit])
-  before_action(:employee_select, only: %i[new create show])
   before_action(:role_select, only: %i[new create show edit])
   before_action(:user_find, only: %i[show edit update destroy])
 
+
   def index
+    role_check([4, 5])
     @users = User.order(id: :asc)
   end
 
   def new
+    role_check([4, 5])
     @user = User.new
   end
 
   def create
+    role_check([4, 5])
+    #render(plain: employee_params.to_yaml) and return
     @user = User.new(user_params)
-    if @user.save then
+
+
+    if @user.save
       flash[:notice] = 'Вы создали пользователя'
-      redirect_to(root_path)
+      redirect_to(users_path)
     else
-      flash[:danger] = @user.errors.full_messages
+      flash.now[:danger] = @user.errors.full_messages
       render(:new)
     end
   end
@@ -29,12 +34,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    role_check([4, 5])
   end
 
   def update
-    if @user.update(user_params) then
-      flash[:notice] = "Параметры пользователя #{@user.employee.name} обновлены"
+    role_check([4, 5])
+    if @user.update(user_params)
+      flash[:notice] = "Параметры пользователя #{@user.fio} обновлены"
       redirect_to(users_path)
     else
       flash.now[:danger] = @user.errors.full_messages
@@ -43,9 +49,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    flash[:info] = "#{@user.employee.name} удален"
-    @user.destroy
-    redirect_to(users_path)
+    role_check([4, 5])
+    if current_user == @user
+      flash[:danger] = "Вы не можете удалить сами себя"
+      redirect_to(users_path)
+    else
+      @user.destroy
+      flash[:info] = "#{name} удален"
+      redirect_to(users_path)
+    end
   end
 
   private
@@ -55,14 +67,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:employee_id, :role_id, :login, :password)
-  end
-
-  def employee_select
-    @employee = Employee.order(name: :asc).map{|e| [e.name, e.id]}
+    params.require(:user).permit(:role_id, :login, :password, :fio)
   end
 
   def role_select
-    @role = Role.order(id: :asc).map{|r| [r.name, r.id]}
+    @role = Role.order(id: :asc).map {|r| [r.name, r.id]}
   end
+
 end

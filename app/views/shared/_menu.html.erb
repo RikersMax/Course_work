@@ -1,6 +1,7 @@
 
 <div class="nav-bar">
   <ul>
+    <li><%= nav_tab('Главная', root_path, {current_page: current_page})%></li>
     <li><%= nav_tab('Изделия', products_path, {current_page: current_page}) %></li>
     <li><%= nav_tab('Приход-Расход', orders_path, {current_page: current_page}) %></li>
     <li><%= nav_tab('Склад', storages_path, {current_page: current_page}) %></li>          
@@ -13,23 +14,27 @@
     <div class="dropdown">
         <span><%= nav_tab(current_user.role.name, users_path, {current_page: current_page})%>&#9660;</span>                      
         <div class="dropdown-content">
-            <ul class="dropdown-ul">
-                <li>
-                    <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page}) %></span>    
-                </li>
-                <hr>
-                <li>                                    
-                    <span><%= nav_tab('Создать нового пользователя', new_user_path, {current_page: current_page})%></span>
-                </li>
-                <hr>                                
-                <li>
-                    <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete}) %></span>
-                </li>
+            <ul class="dropdown-ul">              
+              <li>
+                <span><%= nav_tab('Профиль', user_path(current_user), {current_page: current_page})%></span>  
+              </li>
+              <hr>
+              <li>
+                  <span><%= nav_tab('Список пользователей', users_path, {current_page: current_page})%></span>    
+              </li>
+              <hr>
+              <li>                                    
+                  <span><%= nav_tab('Создать нового пользователя', new_user_path, {current_page: current_page})%></span>
+              </li>
+              <hr>                                
+              <li>
+                  <span><%=link_to('Выйти', session_path,  data: {turbo_method: :delete})%></span>
+              </li>
             </ul>
         </div>
     </div> 
     <% else %>
-      <li><%= nav_tab('Вход', new_session_path, {current_page: current_page}) %></li>
+      <li><%= nav_tab('Вход', root_path, {current_page: current_page}) %></li>
     <% end %>
   </ul>
 </div>
@@ -37,9 +42,9 @@
 <div class="mini-bar-user">
   <ul>
     <% if user_signed_in? then %>
-      <li class="text-secondary"><%=current_user.employee.name %></li>
+      <li class="text-secondary"><%=current_user.fio %></li>
     <% else %>
-      <li>test</li>
+      <li class="text-secondary">Имя пользователя</li>
     <% end %>
   </ul>
 </div>

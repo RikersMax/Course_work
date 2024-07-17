@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_14_172054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "employees", force: :cascade do |t|
-    t.string "name"
-    t.string "number", null: false
-    t.string "job_title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["number"], name: "index_employees_on_number", unique: true
-  end
 
   create_table "movements", force: :cascade do |t|
     t.string "name_movement"
@@ -33,13 +24,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
     t.bigint "product_id", null: false
     t.integer "quantity"
     t.bigint "movement_id", null: false
-    t.bigint "employee_id", null: false
     t.string "address"
     t.string "description"
     t.datetime "datestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_orders_on_employee_id"
     t.index ["movement_id"], name: "index_orders_on_movement_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
@@ -59,7 +48,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.string "role"
+    t.integer "number"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,20 +61,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_153358) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "fio", null: false
     t.string "login", null: false
     t.string "password"
-    t.bigint "employee_id", null: false
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["employee_id"], name: "index_users_on_employee_id"
+    t.string "remember_token_digest"
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "orders", "employees"
   add_foreign_key "orders", "movements"
   add_foreign_key "orders", "products"
   add_foreign_key "products", "targets"
-  add_foreign_key "users", "employees"
   add_foreign_key "users", "roles"
 end

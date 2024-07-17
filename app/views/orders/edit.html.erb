@@ -1,15 +1,11 @@
 <% provide :page_title, 'Intake' %>
 <% provide :menu, currently_at('Приход-Расход')%>
-<% provide :mini_menu, currently_at_order('') %>
+<% provide :mini_menu, currently_at_mini_menu(@order.movement.name_movement , 'shared/mini_bar_order') %>
 
 <section class="a-head">
-	<strong>edit</strong>
 	<hr>	
 </section>
 
 <article class="content-main">
-	<p>id - <%=@order.id %></p>
-
-	<%=render(partial: 'form', locals: {object: @order, url: order_path}) %>
-	<span><%=link_to('Удалить', order_path(@order), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %></span>
+	<%=render(partial: 'form', locals: {object: @order, url: order_path}) %>	
 </article>

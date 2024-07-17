@@ -1,38 +1,31 @@
 <% provide :page_title, 'All users' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('Список пользователей') %>
+<% provide :mini_menu, currently_at_mini_menu('Список пользователей', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">
-	<strong>index user</strong>
 	<hr>	
 </section>
 
 <article class="content-main">	
 
-	<table class="content-table text-size-l ">
+	<table class="content-table" style="width: 60%;">
 	<caption>
 		<span class="text-size-xl">Список сотрудников имеющих доступ в систему</span>
 	</caption>
 	<thead>
 		<tr>
-			<th>id</th>
 			<th>Сотрудник</th>			
 			<th>Парва доступа</th>
-			<th>Логин</th>
-			<th>Пароль</th>
-			<th></th>
+			<th>Подробно</th>
 		</tr>
 	</thead>
 	<tbody>
 		<%@users.each do |u|%>
-			<tr>
-				<td><%= u.id%></td>
-				<td><%= u.employee.name%></td>
+			<tr>			
+				<td><%= u.fio %></td>
 				<td><%= u.role.name%></td>
-				<td><%= u.login%></td>
-				<td><%= u.password%></td>
-				<td><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
+				<td style="text-align: center;"><%= link_to('Информация', user_path(u), class: 'table-link-info') %></td>			
 			</tr>
 		<% end %>
 	</tbody>

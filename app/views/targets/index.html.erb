@@ -1,34 +1,32 @@
 <% provide :page_title, 'Targerts' %>
 <% provide :menu, currently_at('Изделия')%>
-<% provide :mini_menu, currently_at_prod('Назначение изделий') %>
+<% provide :mini_menu, currently_at_mini_menu('Назначение изделий', 'shared/mini_bar_prod') %>
 
 <section class="a-head">
-	<strong>index</strong>
 	<hr>
 </section>
 
 <article class="content-main">	
-	<table class="content-table text-size-l ">
+	<table class="content-table">
 	<caption>
 		<span class="text-size-xl">Все назначения</span>
 	</caption>
 		<thead>
 			<tr>
-				<th>id</th>
 				<th>Название</th>
 				<th>Дата создания</th>
-				<th>Дата измененмя</th>		
+				<th>Дата измененмя</th>
+				<th colspan="2">Действия</th>	
 			</tr>
 		</thead>
 		<tbody>
 			<% @targets.each do |target| %>
 				<tr>
-					<td><%=target.id %> </td>
-					<td><%=target.name %></td>
-					<td><%=currect_date(target.created_at) %></td>
-					<td><%=currect_date(target.updated_at) %></td>
-					<td><%=link_to('Изменить', edit_target_path(target), class: 'table-link-info') %></td>
-					<td><%=link_to('Удалить', target_path(target), 
+					<td class="td-center"><%=target.name %></td>
+					<td class="td-center"><%=currect_date(target.created_at) %></td>
+					<td class="td-center"><%=currect_date(target.updated_at) %></td>
+					<td class="td-center"><%=link_to('Изменить', edit_target_path(target), class: 'table-link-info') %></td>
+					<td class="td-center"><%=link_to('Удалить', target_path(target), 
 									data: {turbo_method: :delete, turbo_confirm: "Вы уверены что хотите удалить #{target.name}"},
 									class: 'table-link-destroy')
 					%></td>

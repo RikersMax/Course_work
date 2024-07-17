@@ -1,0 +1,155 @@
+
+/*forms*/
+
+.form-conteiner {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1em;	
+}
+
+.form-session {
+	display: flex;	
+	flex-direction: column;
+	align-items: center;
+
+	background-color: #c4d8ed;
+	border: solid 1px;
+	
+	min-width: 350px;
+	padding-bottom: 10px;	
+}
+
+.form-session > .name-head {	
+	background-color: #7eb9d6;
+	text-align: center;
+	width: 100%;
+	line-height: 2;
+	margin-bottom: 0.5em;
+}
+
+.input-select {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #999;
+	font-size: 18px;
+	color: #1c87c9;
+	background-color: #eee;
+	border-radius: 5px;
+}
+
+.form-session select {
+	width: auto;
+	height: 30px;
+	border: 1px solid #999;
+	font-size: 0.7em;
+	color: #000;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0 10px 0 10px;
+}
+
+.input-field {
+	margin-bottom: 0.5em;
+}
+
+.input-field label {
+	display: block;	
+	margin-bottom: 5px;
+}
+
+.input-field input {
+	height: 2em;
+	padding: 0 10px 0 10px;
+	font-size: 0.7em;	
+	border: 1px solid #999;
+	color: #000;
+	border-radius: 5px;
+}
+
+.input-field textarea {
+	padding: 10px 10px 0 10px;
+	font-size: 0.7em;	
+	border: 1px solid #999;
+	color: #000;
+	border-radius: 5px;
+	resize: none;
+}
+
+.input-check-box {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 0.5em;
+}
+
+.input-check-box label {	
+	margin-bottom: 5px;
+}
+
+.input-check-box input {	
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.input-date {
+	margin-bottom: 0.5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input-date input {
+	height: 2em;
+	padding: 0 10px 0 10px;
+	font-size: 0.7em;	
+	border: 1px solid #999;
+	color: #000;
+	border-radius: 5px;
+}
+
+.text-form-contend p {
+	padding-bottom: 5px;
+}
+
+
+/*form-errors*/
+
+.field_with_errors label {
+	color: #e84e4f;
+}
+
+.field_with_errors input {
+	border: solid 1px;
+	border-color: #e84e4f;
+}
+
+
+/*support-content*/
+
+.supprot-content-login {
+	display: block;	
+	padding: 1em 0 1em 0;	
+}
+
+
+/*btn*/
+
+.form-btn {
+	display: flex;
+	justify-content: center;
+	padding: 0.5rem;
+	height: 45px;
+}
+
+.form-btn-between {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0px;	
+	height: 45px;
+}
+
+.form-btn-around {
+	display: flex;
+	justify-content: space-around;
+	padding: 0.5rem;
+	height: 45px;
+}

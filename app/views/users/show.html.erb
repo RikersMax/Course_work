@@ -1,25 +1,58 @@
 <% provide :page_title, 'Show user' %>
 <% provide :menu, currently_at(current_user.role.name.to_s)%>
-<% provide :mini_menu, currently_at_user('Список пользователей') %>
+<% provide :mini_menu, currently_at_mini_menu('', 'shared/mini_bar_user') %>
 
 
 <section class="a-head">
-	<strong>Сотрудник</strong>
 	<hr>	
 </section>
 
 <article class="content-main">
-	<section class="text-size-xl">
-		<p><b><%= @user.employee.name %></b></p>
-		<p>Должность - <%= @user.employee.job_title %></p>
-		<p>Табельный номер - <%= @user.employee.number%></p>
-		<p>Права доступа - <%= @user.role.name %></p>
-		<hr>
-		<p>Логин - <%= @user.login %></p>
-		<p>Пароль - <%= @user.password %></p>
-		<hr>
-		<p><%= link_to('Изменить', edit_user_path(@user) ) %></p>
-		<p><%= link_to('Удалить из системы', user_path(@user), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %></p>
-	</section>
-	
+	<section class="text-size-xl profile-main-container">
+		<div class="profile">
+			<span class="name-head ">Профиль пользователя</span>
+			<div class="profile-info">				
+				<div class="hr-line">
+					<hr>					
+				</div>
+
+				<div class="profile-text">
+					<p>ФИО - <%= @user.fio %></p>
+				</div>
+				<div class="hr-line">
+					<hr>					
+				</div>
+				<div>
+					<p>Роль - <%=@user.role.name %> </p>
+				</div>
+				<div class="hr-line">
+					<hr>					
+				</div>
+				<div class="description-user">
+					<div class="profile-text">
+						<p>Права доступа - <%= @user.role.description %></p>														
+					</div>
+				</div>
+				<div class="hr-line">
+					<hr>					
+				</div>
+				<div class="profile-text">
+					<p>Логин - <%= @user.login %></p>
+					<p>Пароль - <%= @user.password %></p>				
+				</div>
+				<div class="hr-line">
+					<hr>					
+				</div>
+				<%if current_user.role.number >= 4 %>
+					<div class="profile-btn">				
+							<%= link_to('Изменить', edit_user_path(@user), class: 'btn-info') %>
+							<%= link_to('Назад', users_path, class: 'btn-info') %>	
+							<% if current_user != @user %>
+								<%= link_to('Удалить', user_path(@user), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn-danger') %>
+							<% end %>													
+					</div>
+				<%end %>
+			</div>
+		</div>
+	</section>	
 </article>

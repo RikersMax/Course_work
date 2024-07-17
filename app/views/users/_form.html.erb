@@ -1,28 +1,64 @@
-<%= form_with model: object, data: {turbo: false} do |f| %>
-	<% if !object.persisted? %>
-	<div>
-		<%=f.label :employee_id, 'Сотрудник' %>
-		<%=f.select(:employee_id, @employee) %>
-	</div>
-	<% end %>
+<section class="form-conteiner text-size-xl">
+	<div class="form-session">
+		<span class="name-head"><%= object.persisted? ? object.fio : 'Новый пользователь'%></span>
+	<%= form_with model: object, data: {turbo: false} do |f| %>		
+		<div class="input-field">
+			<p><%=f.label(:fio, 'ФИО', class: 'text-size-l')%></p>			
+			<p><%=f.text_field(:fio, {placeholder: 'Имя пользователя'}) %></p>
+		</div>		
 
-	<div>
-		<%=f.label :role_id, 'Права сотрудника' %>
-		<%=f.select(:role_id, @role) %>
-	</div>
+		<div class="input-field">
+			<p><%=f.label(:role_id, 'Права сотрудника', class: 'text-size-l')%></p>
+			<p><%=f.select(:role_id, @role) %></p>
+		</div>
 
-	<div>
-		<%=f.label :login, 'Логин' %>
-		<%=f.text_field :login %>
-	</div>
+		<div class="input-field">
+			<p><%=f.label(:login, 'Логин пользователя', class: 'text-size-l')%></p>
+			<p><%=f.text_field(:login, {placeholder: 'Логин'})%></p>
+		</div>
 
-	<div>
-		<%=f.label :password, 'Пароль' %>
-		<%=f.text_field :password %>
-	</div>
-
-	<div>
-		<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать')) %>
-	</div>
+		<div class="input-field">
+			<p><%=f.label(:password, 'Пароль пользователя', class: 'text-size-l')%></p>
+			<p><%=f.text_field(:password, {placeholder: 'Пароль'})%></p>
+		</div>
+		
+		<div class="form-btn">
+			<%=f.submit(submit_text(f, if_exists: 'Сохранить', if_not_exists: 'Создать'), class: 'btn-success') %>
+		</div>
+		<% if object.persisted? %>
+			<div class="form-btn">
+				<%=link_to('Назад', object.persisted? ? user_path(object) : users_path, class: 'btn-info') %>
+			</div>
+		<% end %>
 	
-<% end %>
+	<% end %>
+	</div>
+</section>
+<section class="text-size-xl profile-main-container">
+		<div class="description-container">
+			<span class="description-name-head">Описание ролей</span>
+		<div class="description-items-all">
+			<div class="description-item">
+				<%=label(:Viewer, 'Viewer', class: 'class-item-role') %>
+				<p id="Viewer">Может просматривать элементы не требующие авторизации.</p>				
+			</div>
+			<div class="description-item">				
+				<%=label(:Field_Worker, 'Field Worker', class: 'class-item-role') %>
+				<p id="Field_Worker">Может просматривать и редактировать данные.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Creator, 'Creator' , class: 'class-item-role') %>
+				<p id="Creator">Может создавать, просматривать и редактировать данные.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Master, 'Master', class: 'class-item-role') %>
+				<p id="Master">Может создавать, просматривать и редактировать данные, а также добавлять и удалять пользователей.</p>
+			</div>
+			<div class="description-item">
+				<%=label(:Admin, 'Admin', class: 'class-item-role') %>
+				<p id="Admin">Обладает все правами Master, необходим для редактрования и отладки приложения.</p>
+			</div>
+		</div>
+		</div>	
+
+</section>

@@ -12,8 +12,7 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <p><%= link_to('header', root_path)%></p>
+      <header>        
         <div class="menu">
           <%= yield(:menu) %>
           <%= yield(:mini_menu) %>
@@ -27,8 +26,8 @@
           <%= yield %>          
         </div>
       </main>
-      <footer>
-        <p>footer</p>
+      <footer class="footer-grid">
+        <%= render(partial: 'shared/footer') %>
       </footer>
     </div>
   </body>

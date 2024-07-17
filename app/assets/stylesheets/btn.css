@@ -1,0 +1,50 @@
+
+/*btn*/
+
+.btn-success {
+	box-sizing: border-box;
+	color: #000;
+	font-size: 1rem;
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #60b56e;
+	padding: 10px 15px;
+	border-radius: 5px;
+	line-height: 1.5em;
+}
+
+.btn-danger {
+	box-sizing: border-box;
+	color: #000;
+	font-size: 1rem;
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #db5757;
+	padding: 10px 15px;
+	border-radius: 5px;
+	line-height: 1.5em;
+}
+
+.btn-info {	
+	box-sizing: border-box;
+	color: #000;
+	font-size: 1rem;
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #7eb9d6;
+	padding: 10px 15px;
+	border-radius: 5px;
+	line-height: 1.5em;
+}
+
+.btn-success:hover {
+	background-color: #75d985;
+}
+
+.btn-danger:hover {
+	background-color: #e48181;
+}
+
+.btn-info:hover {
+	background-color: #96cfeb;
+}
